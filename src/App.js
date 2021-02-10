@@ -69,7 +69,7 @@ class App extends Component {
     return axios.delete('http://localhost:5000/users/' + id_to_delete)
      .then(function (response) {
        console.log(response);
-       return (response.status === 201);
+       return (response.status === 204);
      })
      .catch(function (error) {
        console.log(error);

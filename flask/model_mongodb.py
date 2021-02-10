@@ -30,14 +30,11 @@ class Model(dict):
         if self._id:
             resp = self.collection.remove({"_id": ObjectId(self._id)})
             self.clear()
-            print(resp)
             return resp
 
 class User(Model):
     #db_client = pymongo.MongoClient('localhost', 27017)
-    #mongodb+srv://<username>:<password>@popup-307.ugbrh.mongodb.net/<dbname>?retryWrites=true&w=majority
     db_client = pymongo.MongoClient('mongodb+srv://csc307:csc307@popup-307.ugbrh.mongodb.net/<dbname>?retryWrites=true&w=majority')
-
     collection = db_client["users"]["users_list"]
 
     def find_all(self):
@@ -53,8 +50,7 @@ class User(Model):
         return users
 
     def find_by_name_and_job(self, name, job):
-        users = list(self.collection.find({"job": job, "name": name}))
+        users = list(self.collection.find({"name": name, "job":job}))
         for user in users:
             user["_id"] = str(user["_id"])
         return users
-
