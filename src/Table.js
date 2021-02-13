@@ -4,11 +4,11 @@ import CardBody from './CardBody'
 const TableHeader = () => {
   return (
     <thead>
-      <tr>
-        <th>Name</th>
-        <th>Job</th>
-        <th>ID</th>
-      </tr>
+{/*
+      Is this where we should stick our search bar, search button, and hamburger menu?
+      Currently this function does nothing
+      Or probably just make dedicated file for them like CardBody and call them like we do for CardBody below
+*/}
     </thead>
   )
 }

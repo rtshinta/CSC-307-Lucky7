@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 
 class Form extends Component {
   initialState = {
-    name: '',
-    job: '',
+    event: '',
+    description: '',
+    date: '',
     photo: '',
   };
 
   state = this.initialState;
 
   //grabbing variable based on value / name of variable. Then setting to whatever in input.
+  //Is this referring to the name in state that was changed to event?
   handleChange = event => {
     const { name, value } = event.target
   
@@ -25,32 +27,40 @@ class Form extends Component {
   }
 
   render() {
-    const { name, job, photo} = this.state;
+    const { event, description, date, photo} = this.state;
   
     return (
       <form>
-        <label htmlFor="name">Name</label>
+        {/*Just changed the labels, need to change the field names in the backend*/}
+        <label htmlFor="event">Event Name</label>
         <input
           type="text"
-          name="name"
-          id="name"
-          value={name}
+          name="event"
+          id="event"
+          value={event}
           onChange={this.handleChange} />
-        <label htmlFor="job">Job</label>
+        <label htmlFor="description">Description</label>
         <input
           type="text"
-          name="job"
-          id="job"
-          value={job}
+          name="description"
+          id="description"
+          value={description}
           onChange={this.handleChange} />
-        <label htmlFor="photo">photo link</label>
+        <label htmlFor="date">Date</label>
+        <input
+          type="text"
+          name="date"
+          id="date"
+          value={date}
+          onChange={this.handleChange} />
+        <label htmlFor="photo">Photo Link</label>
         <input
           type="text"
           name="photo"
           id="photo"
           value={photo}
           onChange={this.handleChange} />
-          <input type="button" value="Submit" onClick={this.submitForm} />
+        <input type="button" value="Submit" onClick={this.submitForm} />
       </form>
     );
 }
