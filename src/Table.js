@@ -1,14 +1,11 @@
 import React, { Component } from 'react'
 import CardBody from './CardBody'
+import NavBar from './NavBar'
 
 const TableHeader = () => {
   return (
     <thead>
-{/*
-      Is this where we should stick our search bar, search button, and hamburger menu?
-      Currently this function does nothing
-      Or probably just make dedicated file for them like CardBody and call them like we do for CardBody below
-*/}
+      <NavBar></NavBar>
     </thead>
   )
 }
