@@ -8,6 +8,7 @@ class Form extends Component {
     date: '',
     photo: '',
     tags: '',
+    rating: '',
   };
 
   state = this.initialState;
@@ -30,7 +31,7 @@ class Form extends Component {
   }
 
   render() {
-    const { event, description, location, date, photo, tags} = this.state;
+    const { event, description, location, date, photo, tags, rating } = this.state;
   
     return (
       <form>
@@ -76,6 +77,13 @@ class Form extends Component {
           name="photo"
           id="photo"
           value={photo}
+          onChange={this.handleChange} />
+        <label htmlFor="rating">rating</label>
+        <input
+          type="text"
+          name="rating"
+          id="rating"
+          value={rating}
           onChange={this.handleChange} />
         <input type="button" value="Submit" onClick={this.submitForm} />
       </form>
