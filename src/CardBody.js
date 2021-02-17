@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
-import './style.css'
-import { Card, Button, Tag } from 'react-bootstrap'
+import React, { Component } from 'react';
+import './style.css';
+import { Card, Button, Tag, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './fonts/Montserrat-Medium.ttf'
-import './CardBody.css'
+import './fonts/Montserrat-Medium.ttf';
+import './CardBody.css';
+import Slider from './Slider';
 
 const trimString = (text_input, limit) => {
     var text_input2 = text_input.replace(/\n/g, '');
@@ -14,12 +15,16 @@ const trimString = (text_input, limit) => {
     return (text_input2.substring(0,limit) + '\n');
   }
 
+const tagsList = (tagString) => {
+  return tagString.split(",");
+}
+
 const StarsToDisplay = (props) => {
   var rating = parseInt(props.text_input);
   var ratings = Array(5).fill().map((_, i) => i < rating ? 'fa fa-star checked' : 'fa fa-star');
 
   //Why does this not allow the rating to be 5?
-  if(rating >=0 && rating <5)
+  if(rating >=0 && rating <=5)
   {
     return(
       <div style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "86%", left: '0', right: '0', textAlign: 'center', fontSize: '1.5rem',}}>
@@ -52,22 +57,24 @@ const TagOutput = (props) => {
 
 const CardBody = props => {
     const rows = props.characterData.map((row, index) => {
-    var trimmed_name = trimString(row.event, 40);
-
+    var trimmed_name = trimString(row.event, 30);
     //temporary remove this and put dynamic data.
-    var tags = ['Food Truck','Concert', 'Clothing', 'of']
-    var rating = '4';
+    var tags = row.tags.split(",");
+    var rating = '5';
     var date = row.date;
-
+    var location = row.location;
+    var description = trimString(row.description, 25);
+    
       return (
         <li style={{padding: '20px'}}>
-        <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "400px", borderRadius: '2rem',}}>
+        <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "500px", borderRadius: '2rem',}}>
           <Card.Img style={{ height: '30%', objectFit: 'cover', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem'}} src={row.photo} />
           <div style={{textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: '#1186F2'}}>{date}</div>
             <Card.Body>
               <Card.Title>{trimmed_name}</Card.Title>
+              <Card.Text>{description}</Card.Text>
               <TagOutput tags_list={tags} ></TagOutput>
-              <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>Modesto, CA</Card.Text>
+              <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>{location}</Card.Text>
               <StarsToDisplay text_input={rating}></StarsToDisplay>
               <Button variant="outline-primary" size="sm" style={{position: 'absolute', top: '3%', left: '77%'}}  onClick={() => props.removeCharacter(index)}>X</Button>
             </Card.Body>

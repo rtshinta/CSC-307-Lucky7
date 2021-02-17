@@ -4,8 +4,10 @@ class Form extends Component {
   initialState = {
     event: '',
     description: '',
+    location:'',
     date: '',
     photo: '',
+    tags: '',
   };
 
   state = this.initialState;
@@ -20,6 +22,7 @@ class Form extends Component {
     })
   }
 
+
   //calls the handleChange function and sets it?
   submitForm = () => {
     this.props.handleSubmit(this.state)
@@ -27,7 +30,7 @@ class Form extends Component {
   }
 
   render() {
-    const { event, description, date, photo} = this.state;
+    const { event, description, location, date, photo, tags} = this.state;
   
     return (
       <form>
@@ -46,12 +49,26 @@ class Form extends Component {
           id="description"
           value={description}
           onChange={this.handleChange} />
+        <label htmlFor="location">Location</label>
+        <input
+          type="text"
+          name="location"
+          id="location"
+          value={location}
+          onChange={this.handleChange} />
         <label htmlFor="date">Date</label>
         <input
           type="text"
           name="date"
           id="date"
           value={date}
+          onChange={this.handleChange} />
+        <label htmlFor="tags">Tags</label>
+        <input
+          type="text"
+          name="tags"
+          id="tags"
+          value={tags}
           onChange={this.handleChange} />
         <label htmlFor="photo">Photo Link</label>
         <input

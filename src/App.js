@@ -2,10 +2,16 @@ import React, { Component } from 'react'
 import Table from './Table'
 import Form from './Form'
 import axios from 'axios';
+import Slider from './Slider';
+import Sidecard from './Sidecard';
+//import Slider from 'react-rangeslider';
+import Categories from './Categories';
+import Badge from 'react-bootstrap/Badge';
+import { Card, Button, Tag, DropdownButton } from 'react-bootstrap';
 
 class App extends Component {
 	state = {
-		characters: []
+    characters: []
   };
 
   componentDidMount() {
@@ -77,18 +83,30 @@ class App extends Component {
      });
   }
 
+  handleChangeStart = () => {
+    console.log('Change event started')
+  };
+
+  handleChange = value => {
+    this.setState({
+      value: value
+    })
+  };
+
   render() {
     const { characters } = this.state;
-    
     return (
       <div className="container">
         <Table characterData={characters} removeCharacter={this.removeCharacter} />
         <Form handleSubmit={this.handleSubmit} />
+        <br></br>
+        <Sidecard />
+        <br></br>
       </div>
     );
   }
 
 }
-
+//<Slider defaultValue={50} min={0} step={1} max={100} value={this.state.value} onChange={this.handleChange} onDragStop={this.handleDragStop} vertical={true}/>
 /*Note the last line in the App.js file. It makes the component available to be imported into other components or files (like we did in the index.js -- see the import).*/
 export default App
