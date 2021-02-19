@@ -76,7 +76,7 @@ const CardBody = props => {
               {/* <Card.Text>{description}</Card.Text> */}
               <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>{location}</Card.Text>
               <StarsToDisplay text_input={rating}></StarsToDisplay>
-              <Button style={{position: 'absolute', top: '5%', left: '80%'}}  onClick={() => props.removeCharacter(index)}>X</Button>
+              <Button style={{position: 'absolute', top: '5%', left: '80%', borderRadius: '5rem'}}  onClick={() => props.removeCharacter(index)}>X</Button>
             </Card.Body>
         </Card>
         </li>
