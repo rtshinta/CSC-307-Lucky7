@@ -12,7 +12,7 @@ app = Flask(__name__)
 #CORS stands for Cross Origin Requests.
 CORS(app) #Here we'll allow requests coming from any domain. Not recommended for production environment.
 
-users2 = { 
+users = { 
    'users_list':
    [
       { 
@@ -97,7 +97,7 @@ def get_user(id):
         return jsonify({"error": "User not found"}), 404
 
 def find_users_by_name(name):
-    filtered = filter(lambda c: c['name'] == name, users2['users_list'])
+    filtered = filter(lambda c: c['name'] == name, users['users_list'])
     return list(filtered)
 
 """def find_users_by_name_job(name, job):
