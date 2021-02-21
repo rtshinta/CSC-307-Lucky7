@@ -1,4 +1,5 @@
 # CSC-307-Lucky7
+<<<<<<< HEAD
 we will be using camel case stylization for naming functions.
 
 a line break of at max 120 characters will be used.
@@ -31,3 +32,8 @@ Python will be following traditional tab indention.
 
 imports will all be given own line to increase readibility. imports will be.
 from ... import ...
+=======
+
+test
+travis
+>>>>>>> dc4f5c9abd226b22ca234bd30d47a5f0d351bbb0
