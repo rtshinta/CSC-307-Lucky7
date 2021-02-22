@@ -1,6 +1,7 @@
 import pytest
 import sample_backend
 
+# example tests
 def test_find_users_by_name_success():  
     expected = [
         {
