@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import App from './App';
+import handleSubmit from "./App"
 
 class Form extends Component {
   initialState = {
@@ -78,7 +80,7 @@ class Form extends Component {
           id="photo"
           value={photo}
           onChange={this.handleChange} />
-        <label htmlFor="rating">rating</label>
+        <label htmlFor="rating">Rating</label>
         <input
           type="text"
           name="rating"

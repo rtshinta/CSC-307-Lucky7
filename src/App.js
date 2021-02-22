@@ -9,6 +9,14 @@ import Categories from './Categories';
 import Badge from 'react-bootstrap/Badge';
 import { Card, Button, Tag, DropdownButton } from 'react-bootstrap';
 
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import NavBar from './NavBar';
+
 class App extends Component {
 	state = {
     characters: []
@@ -97,16 +105,55 @@ class App extends Component {
     const { characters } = this.state;
     return (
       <div className="container">
-        <Table characterData={characters} removeCharacter={this.removeCharacter} />
-        <Form handleSubmit={this.handleSubmit} />
-        <br></br>
-        <Sidecard />
+        <NavBar />
+        <Router>
+          <Switch>
+            <Route path="/about">
+              <About />
+            </Route>
+            <Route path="/eventform">
+              <EventForm handleSubmit={this.handleSubmit}  />
+            </Route>
+            <Route path="/">
+              <Home characterData={characters} removeCharacter={this.removeCharacter}/>
+            </Route>
+          </Switch>
+        </Router>
         <br></br>
       </div>
     );
   }
+  
+
 
 }
 //<Slider defaultValue={50} min={0} step={1} max={100} value={this.state.value} onChange={this.handleChange} onDragStop={this.handleDragStop} vertical={true}/>
 /*Note the last line in the App.js file. It makes the component available to be imported into other components or files (like we did in the index.js -- see the import).*/
 export default App
+
+const EventForm = (props) => {
+  return (
+    <div>
+      <Form handleSubmit={props.handleSubmit} />
+    </div>
+  )
+}
+
+const Home = (props) => {
+  return (
+    <div>
+      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
+      <Sidecard />
+    </div>
+  )
+}
+
+function About() {
+  return (
+  <div>  
+    <h2>About</h2>
+    <p>Here we'll put some information about our team</p>
+  </div>
+  )
+}
+
