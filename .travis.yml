@@ -7,9 +7,6 @@ jobs:
     install:
     - pip install -r requirements.txt
     script:
-    - export FLASK_APP=sample_backend.py
-    - export FLASK_ENV=development
-    - flask run
     - pytest -v flask/*_tests.py
 
   - language: node_js

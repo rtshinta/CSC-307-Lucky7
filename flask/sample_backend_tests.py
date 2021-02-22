@@ -1,34 +1,16 @@
 import pytest
 import sample_backend
 import requests
+from sample_backend import app
 
 url = 'http://127.0.0.1:5000/'
 
-# example tests
-def test_find_users_by_name_success():  
-    expected = [
-        {
-            'id' : 'abc123',            
-            'name': 'Mac',
-            'job': 'Bouncer',
-        },
-        {
-            'id' : 'ppp222',            
-            'name': 'Mac',
-            'job': 'Professor',
-        },        
-    ]
-    assert sample_backend.find_users_by_name("Mac") == expected
+def test_hello():
+    response = app.test_client().get('/')
 
-def test_find_users_by_name_fail():  
-    expected = [] 
-    assert sample_backend.find_users_by_name("Jeff") == expected
-
-def test_homepage():
-    r = requests.get(url)
-    assert r.text == 'Hello, World! And Travis'
-    assert r.status_code == 200
+    assert response.status_code == 200
+    assert response.data == b'Hello, World!'
 
 def test_getUsers():
-    r = requests.get(url + 'users')
-    assert r.status_code == 200
+    response = app.test_client().get('/users')
+    assert response.status_code == 200
