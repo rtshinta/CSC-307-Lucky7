@@ -1,6 +1,6 @@
 jobs:
   include:
-    language: python
+  - language: python
     python:
     - '3.6'
     - '3.7'
@@ -9,7 +9,7 @@ jobs:
     script:
     - pytest -v flask/*_tests.py
 
-    language: node_js
+  - language: node_js
     node_js:
     - '14.15.4'
     install:
