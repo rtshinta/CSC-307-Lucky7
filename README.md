@@ -1,4 +1,5 @@
 # CSC-307-Lucky7
+https://travis-ci.org/rtshinta/CSC-307-Lucky7.svg?branch=main
 we will be using camel case stylization for naming functions.
 
 a line break of at max 120 characters will be used.
