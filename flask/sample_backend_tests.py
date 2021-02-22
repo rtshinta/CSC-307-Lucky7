@@ -9,7 +9,7 @@ def test_hello():
     response = app.test_client().get('/')
 
     assert response.status_code == 200
-    assert response.data == b'Hello, World!'
+    assert response.data == b'Hello, World! And Travis'
 
 def test_getUsers():
     response = app.test_client().get('/users')
