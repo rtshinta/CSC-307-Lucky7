@@ -9,13 +9,4 @@ jobs:
     script:
     - pytest -v flask/*_tests.py
   
-    - language: node_js
-    node_js: 
-    - '14.15.4'
-    install:
-    - npm install
-    - npm install react-bootstrap bootstrap
-    - npm install react-bootstrap-range-slider
-    - npm install --global yarn
-    script:
-    - yarn test --watchAll=false
+    
