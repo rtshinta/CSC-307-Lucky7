@@ -30,11 +30,11 @@ const NavBar =() =>{
                     <i class="glyphicon glyphicon-menu-hamburger" style={{display:'flex', justifyContent:'center',alignItems:'center',fontSize:'17px'}}></i>
                 </button>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Home</a>
-                    <a class="dropdown-item" href="#">For Kids</a>
-                    <a class="dropdown-item" href="#">For Adults</a>
+                    <a class="dropdown-item" href="/">Home</a>
                         <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Dank Memes</a>
+                    <a class="dropdown-item" href="/eventform">Form</a>
+                        <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/about">About</a>
                 </div>
             </div>
         </div>

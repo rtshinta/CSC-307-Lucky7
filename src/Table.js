@@ -5,7 +5,8 @@ import NavBar from './NavBar'
 const TableHeader = () => {
   return (
     <thead>
-      <NavBar></NavBar>
+      {/* <NavBar></NavBar> */}
+      {/* No longer calling NavBar here, instead calling in App's render() */}
     </thead>
   )
 }
@@ -15,7 +16,7 @@ const Table = props => {
   
   return (
     <table>
-      <TableHeader />
+      {/* <TableHeader /> */}
       <ul>
         <CardBody characterData={characterData} removeCharacter={removeCharacter} />
       </ul>
