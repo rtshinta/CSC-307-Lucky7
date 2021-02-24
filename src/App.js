@@ -42,6 +42,54 @@ class App extends Component {
    });
   }
 
+  sortAscending = () => {
+    this.makeSortAscCall().then( callResult => {
+      if (callResult === true){
+        axios.get('http://localhost:5000/sort_by_date?type=asc')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+    })
+  }
+
+  sortRatingAscending = () => {
+    this.makeSortRatingAscCall().then( callResult => {
+      if (callResult === true){
+        axios.get('http://localhost:5000/sort_by_rating?type=asc')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+    })
+  }
+
+  sortDescending = () => {
+    this.makeSortDescCall().then( callResult => {
+      if (callResult === true){
+        axios.get('http://localhost:5000/sort_by_date?type=desc')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+    })
+  }
+
+  sortRatingDescending = () => {
+    this.makeSortRatingDescCall().then( callResult => {
+      if (callResult === true){
+        axios.get('http://localhost:5000/sort_by_rating?type=desc')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+    })
+  }
+
 
   handleSubmit = character => {
     this.makePostCall(character).then( callResult => {
@@ -67,6 +115,54 @@ class App extends Component {
        console.log(error);
        return false;
      });
+  }
+
+  makeSortAscCall(){
+    return axios.get('http://localhost:5000/sort_by_date?type=asc')
+    .then(function(response){
+      console.log(response);
+      return (response.status == 200);
+    })
+    .catch(function (error){
+      console.log(error);
+      return false;
+    })
+  }
+
+  makeSortRatingAscCall(){
+    return axios.get('http://localhost:5000/sort_by_rating?type=asc')
+    .then(function(response){
+      console.log(response);
+      return (response.status == 200);
+    })
+    .catch(function (error){
+      console.log(error);
+      return false;
+    })
+  }
+
+  makeSortDescCall(){
+    return axios.get('http://localhost:5000/sort_by_date?type=desc')
+    .then(function(response){
+      console.log(response);
+      return (response.status == 200);
+    })
+    .catch(function (error){
+      console.log(error);
+      return false;
+    })
+  }
+
+  makeSortRatingDescCall(){
+    return axios.get('http://localhost:5000/sort_by_rating?type=desc')
+    .then(function(response){
+      console.log(response);
+      return (response.status == 200);
+    })
+    .catch(function (error){
+      console.log(error);
+      return false;
+    })
   }
 
   makeDeleteCall(index){
@@ -134,7 +230,7 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home characterData={characters} removeCharacter={this.removeCharacter}/>
+              <Home characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortAscending} sortDescending={this.sortDescending} sortRatingAscending={this.sortRatingAscending} sortRatingDescending={this.sortRatingDescending}/>
             </Route>
           </Switch>
         </Router>
@@ -162,7 +258,7 @@ const Home = (props) => {
   return (
     <div>
       <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
-      <Sidecard />
+      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending}/>
     </div>
   )
 }

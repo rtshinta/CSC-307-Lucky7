@@ -15,9 +15,17 @@ const trimString = (text_input, limit) => {
     return (text_input2.substring(0,limit) + '\n');
   }
 
-const tagsList = (tagString) => {
-  return tagString.split(",");
-}
+  const dayMonthYear = (date) => {
+    var splitDate = date.split("-");
+    if (splitDate[1][0] == "0"){
+      var newDate = splitDate[1].substring(1,) + "/" + splitDate[2] + "/" + splitDate[0];
+    }
+    else{
+      var newDate = splitDate[1] + "/" + splitDate[2] + "/" + splitDate[0];
+    }
+    
+    return newDate
+  }
 
 const StarsToDisplay = (props) => {
   var rating = parseInt(props.text_input);
@@ -64,12 +72,12 @@ const CardBody = props => {
     var date = row.date;
     var location = row.location;
     var description = trimString(row.description, 25);
-    
+    var d = dayMonthYear(row.date);
       return (
         <li style={{padding: '20px'}}>
         <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "400px", borderRadius: '2rem',}}>
           <Card.Img style={{ height: '30%', objectFit: 'cover', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem'}} src={row.photo} />
-          <div style={{textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: '#1186F2'}}>{date}</div>
+          <div style={{textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: '#1186F2'}}>{d}</div>
             <Card.Body>
               <Card.Title>{trimmed_name}</Card.Title>
               <TagOutput tags_list={tags} ></TagOutput>

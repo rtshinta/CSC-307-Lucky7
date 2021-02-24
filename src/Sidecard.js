@@ -7,6 +7,7 @@ import './style.css';
 import './CardBody.css';
 
 const Sidecard = props => {
+  const { sortAscending , sortDescending, sortRatingAsc, sortRatingDesc } = props;
   const [value, setValue] = useState("Newest to Oldest \u25BD");
   const handleSelect=(e)=>{
     setValue(e)
@@ -27,15 +28,15 @@ const Sidecard = props => {
           Adjust what you want to see in your feed
         </Card.Text>
         <DropdownButton title={value} className="dropdown1" onSelect={handleSelect}>
-          <Dropdown.Item eventKey="Newest to Oldest &#9661;">Newest to Oldest</Dropdown.Item>
+          <Dropdown.Item onClick={sortAscending} eventKey="Newest to Oldest &#9661;">Newest to Oldest</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item eventKey="Oldest to Newest &#9661;">Oldest to Newest</Dropdown.Item>
+          <Dropdown.Item onClick={sortDescending} eventKey="Oldest to Newest &#9661;">Oldest to Newest</Dropdown.Item>
         </DropdownButton>
         <p></p>
         <DropdownButton  title={value2} className="dropdown1" onSelect={handleSelect2}>
-          <Dropdown.Item eventKey="Highest to Lowest Rating &#9661;">Highest to Lowest Rating</Dropdown.Item>
+          <Dropdown.Item onClick={sortRatingDesc} eventKey="Highest to Lowest Rating &#9661;">Highest to Lowest Rating</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item eventKey="Lowest to Highest Rating &#9661;">Lowest to Highest Rating</Dropdown.Item>
+          <Dropdown.Item onClick={sortRatingAsc} eventKey="Lowest to Highest Rating &#9661;">Lowest to Highest Rating</Dropdown.Item>
         </DropdownButton>
         <Slider />
         <Categories />
