@@ -4,6 +4,13 @@
 /node_modules
 /.pnp
 .pnp.js
+/flask/venv
+/flask/_pycache_
+<<<<<<< Updated upstream
+=======
+/venv
+# /public
+>>>>>>> Stashed changes
 
 # testing
 /coverage

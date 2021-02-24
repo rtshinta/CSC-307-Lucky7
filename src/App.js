@@ -2,11 +2,48 @@ import React, { Component } from 'react'
 import Table from './Table'
 import Form from './Form'
 import axios from 'axios';
+<<<<<<< Updated upstream
+=======
+import Slider from './Slider';
+import Sidecard from './Sidecard';
+//import Slider from 'react-rangeslider';
+import Categories from './Categories';
+import Badge from 'react-bootstrap/Badge';
+import { Card, Button, Tag, DropdownButton } from 'react-bootstrap';
+import SearchBar from './SearchBar'
+>>>>>>> Stashed changes
 
 class App extends Component {
 	state = {
 		characters: []
   };
+
+
+  //If string is not empty, do filter search on characters list.
+  //else, reload previous information.
+  handleSearch = textString => {
+    axios.get('http://localhost:5000/users')
+    .then(res => {
+      const previous_characters = res.data.users_list;
+      this.setState({
+        characters: previous_characters,
+      });
+
+      if(textString != '')
+      {
+        const characters = this.state.characters.filter(character => character.event.toLowerCase().includes(textString.toLowerCase()))
+        this.setState({ characters });
+      }
+      else
+      {
+        this.setState({
+          characters: previous_characters,
+        });
+      }
+
+    })
+  }
+
 
   componentDidMount() {
     axios.get('http://localhost:5000/users')
@@ -82,6 +119,7 @@ class App extends Component {
     
     return (
       <div className="container">
+        <SearchBar searchFunction={this.handleSearch}/>
         <Table characterData={characters} removeCharacter={this.removeCharacter} />
         <Form handleSubmit={this.handleSubmit} />
       </div>
