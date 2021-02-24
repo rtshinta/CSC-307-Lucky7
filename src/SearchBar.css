@@ -1,0 +1,9 @@
+input[type=text]
+{
+    border-radius:25px;
+    width:500px;
+    margin-top:25px;
+    border-color:rgb(40, 92, 233);
+}
+
+.dropdown-toggle:after { content: none}

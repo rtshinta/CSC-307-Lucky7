@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import CardBody from './CardBody'
-import NavBar from './NavBar'
 
 const TableHeader = () => {
   return (
