@@ -8,11 +8,39 @@ import Sidecard from './Sidecard';
 import Categories from './Categories';
 import Badge from 'react-bootstrap/Badge';
 import { Card, Button, Tag, DropdownButton } from 'react-bootstrap';
+import SearchBar from './SearchBar'
 
 class App extends Component {
 	state = {
-    characters: []
+		characters: []
   };
+
+
+  //If string is not empty, do filter search on characters list.
+  //else, reload previous information.
+  handleSearch = textString => {
+    axios.get('http://localhost:5000/users')
+    .then(res => {
+      const previous_characters = res.data.users_list;
+      this.setState({
+        characters: previous_characters,
+      });
+
+      if(textString != '')
+      {
+        const characters = this.state.characters.filter(character => character.event.toLowerCase().includes(textString.toLowerCase()))
+        this.setState({ characters });
+      }
+      else
+      {
+        this.setState({
+          characters: previous_characters,
+        });
+      }
+
+    })
+  }
+
 
   componentDidMount() {
     axios.get('http://localhost:5000/users')
@@ -83,30 +111,19 @@ class App extends Component {
      });
   }
 
-  handleChangeStart = () => {
-    console.log('Change event started')
-  };
-
-  handleChange = value => {
-    this.setState({
-      value: value
-    })
-  };
-
   render() {
     const { characters } = this.state;
+    
     return (
       <div className="container">
+        <SearchBar searchFunction={this.handleSearch}/>
         <Table characterData={characters} removeCharacter={this.removeCharacter} />
         <Form handleSubmit={this.handleSubmit} />
-        <br></br>
-        <Sidecard />
-        <br></br>
       </div>
     );
   }
 
 }
-//<Slider defaultValue={50} min={0} step={1} max={100} value={this.state.value} onChange={this.handleChange} onDragStop={this.handleDragStop} vertical={true}/>
+
 /*Note the last line in the App.js file. It makes the component available to be imported into other components or files (like we did in the index.js -- see the import).*/
 export default App
