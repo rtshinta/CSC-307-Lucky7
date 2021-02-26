@@ -12,40 +12,11 @@ app = Flask(__name__)
 #CORS stands for Cross Origin Requests.
 CORS(app) #Here we'll allow requests coming from any domain. Not recommended for production environment.
 
-users = { 
-   'users_list':
-   [
-      { 
-         'id' : 'abc789',
-         'name' : 'Charlie',
-         'job': 'Janitor',
-      },
-      {
-         'id' : 'abc123', 
-         'name': 'Mac',
-         'job': 'Bouncer',
-      },
-      {
-         'id' : 'ppp222', 
-         'name': 'Mac',
-         'job': 'Professor',
-      }, 
-      {
-         'id' : 'yat999', 
-         'name': 'Dee',
-         'job': 'Aspring actress',
-      },
-      {
-         'id' : 'zap555', 
-         'name': 'Dennis',
-         'job': 'Bartender',
-      }
-   ]
-}
+
 
 @app.route('/')
 def hello_world():
-    return 'Hello, World! And Travis'
+    return 'Hello, World!'
 
 @app.route('/users', methods=['GET', 'POST'])
 def get_users():
@@ -95,10 +66,6 @@ def get_user(id):
             return jsonify({"success": "User was removed"}), 204
     
         return jsonify({"error": "User not found"}), 404
-
-def find_users_by_name(name):
-    filtered = filter(lambda c: c['name'] == name, users['users_list'])
-    return list(filtered)
 
 """def find_users_by_name_job(name, job):
     subdict = {'users_list' : []}

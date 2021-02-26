@@ -68,6 +68,9 @@ class App extends Component {
      });
   }
 
+
+
+
   makeDeleteCall(index){
     const { characters } = this.state
     const id_to_delete = characters[index]._id
@@ -118,6 +121,120 @@ class App extends Component {
     })
   }
 
+  handleCategories = (categories) => {
+    axios.get('http://localhost:5000/users')
+    .then(res => {
+      const previous_characters = res.data.users_list;
+      this.setState({
+        characters: previous_characters,
+      });
+
+      if(categories.length != 0)
+      {
+        var characters = [];
+        console.log(categories.some(r=>['Concert', 'Clothing', 'Help'].indexOf(r) >= 0));
+        const categoriesLowercase = categories.forEach(element => element.toLowerCase());
+        for(var i=0; i < this.state.characters.length; i++){
+          var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
+          tags = tags.map(v => v.replace(/\s/g,''));
+          if(categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
+            characters.push(this.state.characters[i]);
+          }
+        }
+
+        this.setState({ characters });
+      }
+      else
+      {
+        this.setState({
+          characters: previous_characters,
+        });
+      }
+
+    })
+  }
+
+  sortCharacterList = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.date.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.date.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+  sortCharacterListDesc = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.date.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.date.toUpperCase(); // ignore upper and lowercase
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+  sortByRating = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+  sortByRatingDesc = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+
   render() {
     const { characters } = this.state;
     return (
@@ -132,7 +249,7 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home characterData={characters} removeCharacter={this.removeCharacter}/>
+              <Home characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories}/>
             </Route>
           </Switch>
         </Router>
@@ -159,7 +276,7 @@ const EventForm = (props) => {
 const Home = (props) => {
   return (
     <div className="Homepage">
-      <Sidecard />
+      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories}/>
       <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
     </div>
   )

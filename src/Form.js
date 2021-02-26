@@ -61,11 +61,12 @@ class Form extends Component {
           onChange={this.handleChange} />
         <label htmlFor="date">Date</label>
         <input
-          type="text"
+          type="date"
           name="date"
           id="date"
           value={date}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+          />
         <label htmlFor="tags">Tags</label>
         <input
           type="text"
