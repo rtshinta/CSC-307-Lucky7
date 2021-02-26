@@ -158,9 +158,9 @@ const EventForm = (props) => {
 
 const Home = (props) => {
   return (
-    <div>
-      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
+    <div className="Homepage">
       <Sidecard />
+      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
     </div>
   )
 }
