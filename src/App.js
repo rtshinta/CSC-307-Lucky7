@@ -277,9 +277,9 @@ const EventForm = (props) => {
 
 const Home = (props) => {
   return (
-    <div>
-      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
+    <div className="Homepage">
       <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories}/>
+      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
     </div>
   )
 }
