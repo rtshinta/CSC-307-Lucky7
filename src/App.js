@@ -42,54 +42,6 @@ class App extends Component {
    });
   }
 
-  sortAscending = () => {
-    this.makeSortAscCall().then( callResult => {
-      if (callResult === true){
-        axios.get('http://localhost:5000/sort_by_date?type=asc')
-        .then(response => {
-          const characters = response.data.users_list;
-          this.setState({ characters });
-        })
-      }
-    })
-  }
-
-  sortRatingAscending = () => {
-    this.makeSortRatingAscCall().then( callResult => {
-      if (callResult === true){
-        axios.get('http://localhost:5000/sort_by_rating?type=asc')
-        .then(response => {
-          const characters = response.data.users_list;
-          this.setState({ characters });
-        })
-      }
-    })
-  }
-
-  sortDescending = () => {
-    this.makeSortDescCall().then( callResult => {
-      if (callResult === true){
-        axios.get('http://localhost:5000/sort_by_date?type=desc')
-        .then(response => {
-          const characters = response.data.users_list;
-          this.setState({ characters });
-        })
-      }
-    })
-  }
-
-  sortRatingDescending = () => {
-    this.makeSortRatingDescCall().then( callResult => {
-      if (callResult === true){
-        axios.get('http://localhost:5000/sort_by_rating?type=desc')
-        .then(response => {
-          const characters = response.data.users_list;
-          this.setState({ characters });
-        })
-      }
-    })
-  }
-
 
   handleSubmit = character => {
     this.makePostCall(character).then( callResult => {
@@ -117,53 +69,8 @@ class App extends Component {
      });
   }
 
-  makeSortAscCall(){
-    return axios.get('http://localhost:5000/sort_by_date?type=asc')
-    .then(function(response){
-      console.log(response);
-      return (response.status == 200);
-    })
-    .catch(function (error){
-      console.log(error);
-      return false;
-    })
-  }
 
-  makeSortRatingAscCall(){
-    return axios.get('http://localhost:5000/sort_by_rating?type=asc')
-    .then(function(response){
-      console.log(response);
-      return (response.status == 200);
-    })
-    .catch(function (error){
-      console.log(error);
-      return false;
-    })
-  }
 
-  makeSortDescCall(){
-    return axios.get('http://localhost:5000/sort_by_date?type=desc')
-    .then(function(response){
-      console.log(response);
-      return (response.status == 200);
-    })
-    .catch(function (error){
-      console.log(error);
-      return false;
-    })
-  }
-
-  makeSortRatingDescCall(){
-    return axios.get('http://localhost:5000/sort_by_rating?type=desc')
-    .then(function(response){
-      console.log(response);
-      return (response.status == 200);
-    })
-    .catch(function (error){
-      console.log(error);
-      return false;
-    })
-  }
 
   makeDeleteCall(index){
     const { characters } = this.state
@@ -215,6 +122,111 @@ class App extends Component {
     })
   }
 
+  handleCategories = textString => {
+    axios.get('http://localhost:5000/users')
+    .then(res => {
+      const previous_characters = res.data.users_list;
+      this.setState({
+        characters: previous_characters,
+      });
+
+      if(textString != '')
+      {
+        console.log(this.state.characters[0]['date']);
+        const characters = this.state.characters.filter(character => character.tags.toLowerCase().includes(textString.toLowerCase()))
+        this.setState({ characters });
+      }
+      else
+      {
+        this.setState({
+          characters: previous_characters,
+        });
+      }
+
+    })
+  }
+
+  sortCharacterList = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.date.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.date.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+  sortCharacterListDesc = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.date.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.date.toUpperCase(); // ignore upper and lowercase
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+  sortByRating = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+  sortByRatingDesc = () => {
+    const c = this.state.characters;
+    const sortedList = c.sort(function(a, b) {
+      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
+      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      if (nameA > nameB) {
+        return -1;
+      }
+      if (nameA < nameB) {
+        return 1;
+      }
+    
+      // names must be equal
+      return 0;
+    });
+    this.setState({
+      characters: sortedList,
+    });
+  }
+
+
   render() {
     const { characters } = this.state;
     return (
@@ -230,7 +242,7 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortAscending} sortDescending={this.sortDescending} sortRatingAscending={this.sortRatingAscending} sortRatingDescending={this.sortRatingDescending}/>
+              <Home characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories}/>
             </Route>
           </Switch>
         </Router>
@@ -258,7 +270,7 @@ const Home = (props) => {
   return (
     <div>
       <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
-      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending}/>
+      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories}/>
     </div>
   )
 }

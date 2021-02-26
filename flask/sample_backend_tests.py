@@ -22,25 +22,10 @@ def test_getUsers():
     response = app.test_client().get('/users')
     assert response.status_code == 200
 
-def test_sortDate():
-    response = app.test_client().get('/sort_by_date?type=asc')
-    assert response.status_code == 200
-
-def test_sortDateDesc():
-    response = app.test_client().get('/sort_by_date?type=desc')
-    assert response.status_code == 200
-
-def test_sortRating():
-    response = app.test_client().get('/sort_by_rating?type=asc')
-    assert response.status_code == 200
-
-def test_sortRatingDesc():
-    response = app.test_client().get('/sort_by_rating?type=desc')
-    assert response.status_code == 200
 
 """def test_postUsers():
     response = app.test_client().post('/users', json={
-      "date": "5/5/5555", 
+      "date": "2021/12/01", 
       "description": "dfba", 
       "event": "gdsf", 
       "location": "dfgb", 

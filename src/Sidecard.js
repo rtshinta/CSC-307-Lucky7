@@ -7,7 +7,7 @@ import './style.css';
 import './CardBody.css';
 
 const Sidecard = props => {
-  const { sortAscending , sortDescending, sortRatingAsc, sortRatingDesc } = props;
+  const { sortAscending , sortDescending, sortRatingAsc, sortRatingDesc, sortCategories } = props;
   const [value, setValue] = useState("Newest to Oldest \u25BD");
   const handleSelect=(e)=>{
     setValue(e)
@@ -39,7 +39,7 @@ const Sidecard = props => {
           <Dropdown.Item onClick={sortRatingAsc} eventKey="Lowest to Highest Rating &#9661;">Lowest to Highest Rating</Dropdown.Item>
         </DropdownButton>
         <Slider />
-        <Categories />
+        <Categories sortCategories={sortCategories}/>
       </Card.Body>
     </Card>
     )

@@ -62,10 +62,11 @@ class Form extends Component {
         <label htmlFor="date">Date</label>
         <input
           type="date"
-          placeholder="mm-dd-yyyy"
+          name="date"
           id="date"
           value={date}
-          onChange={this.handleChange} />
+          onChange={this.handleChange}
+          />
         <label htmlFor="tags">Tags</label>
         <input
           type="text"

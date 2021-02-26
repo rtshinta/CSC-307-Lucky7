@@ -54,30 +54,3 @@ class User(Model):
         for user in users:
             user["_id"] = str(user["_id"])
         return users
-
-    def sort_by_date_asc(self):
-        users = list(self.collection.find().sort([("date", 1), ("_id", 1)]))
-        for user in users:
-            user["_id"] = str(user["_id"])
-        return users
-
-    def sort_by_date_desc(self):
-        users = list(self.collection.find().sort([("date", -1), ("_id", -1)]))
-        for user in users:
-            user["_id"] = str(user["_id"])
-        return users
-
-    def sort_by_rating_asc(self):
-        users = list(self.collection.find().sort([("rating", 1), ("_id", 1)]))
-        for user in users:
-            user["_id"] = str(user["_id"])
-        return users
-
-    def sort_by_rating_desc(self):
-        users = list(self.collection.find().sort([("rating", -1), ("_id", -1)]))
-        for user in users:
-            user["_id"] = str(user["_id"])
-        return users
-
-    #def find_tags(self, tags):
-    #    users = list(self.collection.find())

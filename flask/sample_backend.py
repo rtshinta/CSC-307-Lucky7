@@ -67,30 +67,6 @@ def get_user(id):
     
         return jsonify({"error": "User not found"}), 404
 
-@app.route('/sort_by_date', methods=['GET'])
-def sort_by_date():
-    if request.method == 'GET':
-        sort_type = request.args.get('type')
-        if sort_type == 'asc':
-            result = User().sort_by_date_asc()
-        elif sort_type == 'desc':
-            result = User().sort_by_date_desc()
-        else:
-            result = User().find_all()
-    return {"users_list": result}
-
-@app.route('/sort_by_rating', methods=['GET'])
-def sort_by_rating():
-    if request.method == 'GET':
-        sort_type = request.args.get('type')
-        if sort_type == 'asc':
-            result = User().sort_by_rating_asc()
-        elif sort_type == 'desc':
-            result = User().sort_by_rating_desc()
-        else:
-            result = User().find_all()
-    return {"users_list": result}
-
 """def find_users_by_name_job(name, job):
     subdict = {'users_list' : []}
     for user in users['users_list']:
