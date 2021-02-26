@@ -36,7 +36,7 @@ class Form extends Component {
     const { event, description, location, date, photo, tags, rating } = this.state;
   
     return (
-      <form>
+      <form className="Form_page">
         {/*Just changed the labels, need to change the field names in the backend*/}
         <label htmlFor="event">Event Name</label>
         <input
