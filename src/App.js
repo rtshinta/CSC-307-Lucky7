@@ -11,7 +11,6 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import NavBar from './NavBar';
 
 class App extends Component {
 	state = {
@@ -240,7 +239,6 @@ class App extends Component {
     const { characters } = this.state;
     return (
       <div className="container">
-        <NavBar />
         <SearchBar searchFunction={this.handleSearch}/>
         <Router>
           <Switch>
