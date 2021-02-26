@@ -122,7 +122,7 @@ class App extends Component {
     })
   }
 
-  handleCategories = textString => {
+  handleCategories = (categories) => {
     axios.get('http://localhost:5000/users')
     .then(res => {
       const previous_characters = res.data.users_list;
@@ -130,10 +130,19 @@ class App extends Component {
         characters: previous_characters,
       });
 
-      if(textString != '')
+      if(categories.length != 0)
       {
-        console.log(this.state.characters[0]['date']);
-        const characters = this.state.characters.filter(character => character.tags.toLowerCase().includes(textString.toLowerCase()))
+        var characters = [];
+        console.log(categories.some(r=>['Concert', 'Clothing', 'Help'].indexOf(r) >= 0));
+        const categoriesLowercase = categories.forEach(element => element.toLowerCase());
+        for(var i=0; i < this.state.characters.length; i++){
+          var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
+          tags = tags.map(v => v.replace(/\s/g,''));
+          if(categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
+            characters.push(this.state.characters[i]);
+          }
+        }
+
         this.setState({ characters });
       }
       else
