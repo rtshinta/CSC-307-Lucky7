@@ -128,7 +128,6 @@ class App extends Component {
       this.setState({
         characters: previous_characters,
       });
-      //console.log(categories);
       if(categories.length != 0)
       {
         var characters = [];
