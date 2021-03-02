@@ -128,15 +128,16 @@ class App extends Component {
       this.setState({
         characters: previous_characters,
       });
-
+      //console.log(categories);
       if(categories.length != 0)
       {
         var characters = [];
-        console.log(categories.some(r=>['Concert', 'Clothing', 'Help'].indexOf(r) >= 0));
+        //console.log(categories.some(r=>['Concert', 'Clothing', 'Help', 'food truck'].indexOf(r) >= 0));
         const categoriesLowercase = categories.forEach(element => element.toLowerCase());
         for(var i=0; i < this.state.characters.length; i++){
           var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
-          tags = tags.map(v => v.replace(/\s/g,''));
+          tags = tags.map(v => v.trim());
+          console.log(tags);
           if(categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
             characters.push(this.state.characters[i]);
           }
