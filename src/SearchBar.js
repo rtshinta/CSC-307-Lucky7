@@ -22,35 +22,17 @@ class SearchBar extends Component
     })
   }
 
-
-  //Upon button click, update shown result.
-  submitForm = () => {
-    //this.setState(this.state);
-    this.setState({
-      ['searchEnter']: this.state.currentInput,
-    })
-  }
-
-
   render() {
-    const { currentInput, searchEnter } = this.state;
+    const { currentInput } = this.state;
     const { searchFunction } = this.props;
 
-    /*return (
-      <form>
-        <label htmlFor='currentInput'></label>
-        <input type="text" name="currentInput" id="currentInput" value={currentInput} onChange={this.searchSubmit} />
-        <input type="button" value="Submit" onClick={() => this.props.searchFunction(currentInput)} />
-        <p>{searchEnter}</p>
-      </form>
-    );*/
 
     return(
       <nav class="navbar navbar-default"style={{padding:'0px',backgroundColor:'transparent',borderColor:'transparent'}}>
           <div class="container-fluid" style = {{padding:'0px'}}>
               <div class="navbar-header">
                   <a class="navbar-brand" href="http://localhost:3000/">
-                      <img src= "logo_icon.png" style={{display:'flex', justifyContent:'center',alignItems:'center',marginTop:'1px',height:"50px"}}/>
+                      <img src= "logo_icon.png" alt = "Failed" style={{display:'flex', justifyContent:'center',alignItems:'center',marginTop:'1px',height:"50px"}}/>
                   </a>
               </div>
               <form class="navbar-form navbar-right">
@@ -59,11 +41,10 @@ class SearchBar extends Component
                   <input type="text" name="currentInput" id="currentInput" class = "form-control" 
                   value={currentInput} onChange={this.searchSubmit} placeholder="Search" style ={{width: '500px'}}/>
                 </div>
-                <button type="button" onClick={() => this.props.searchFunction(currentInput)}
+                <button type="button" id="srchBtn" aria-label = "srchBtn" onClick={() => searchFunction(currentInput)}
                 style={{borderRadius:50,height:'40px',width:'40px',marginTop:'20px',marginLeft: '5px'}}>
                   <i class="glyphicon glyphicon-search" style={{display:'flex', justifyContent:'center',alignItems:'center',fontSize:'17px'}}></i>
                 </button>
-                <p>{searchEnter}</p>
               </form>
               <div class="btn-group">
                   <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
