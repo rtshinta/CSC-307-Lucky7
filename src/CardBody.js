@@ -4,7 +4,6 @@ import { Card, Button, Tag, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/Montserrat-Medium.ttf';
 import './CardBody.css';
-import Slider from './Slider';
 
 const trimString = (text_input, limit) => {
     var text_input2 = text_input.replace(/\n/g, '');
@@ -15,17 +14,17 @@ const trimString = (text_input, limit) => {
     return (text_input2.substring(0,limit) + '\n');
   }
 
-  const dayMonthYear = (date) => {
-    var splitDate = date.split("-");
-    if (splitDate[1][0] == "0"){
-      var newDate = splitDate[1].substring(1,) + "/" + splitDate[2] + "/" + splitDate[0];
-    }
-    else{
-      var newDate = splitDate[1] + "/" + splitDate[2] + "/" + splitDate[0];
-    }
-    
-    return newDate
+const dayMonthYear = (date) => {
+  var splitDate = date.split("-");
+  if (splitDate[1][0] == "0"){
+    var newDate = splitDate[1].substring(1,) + "/" + splitDate[2] + "/" + splitDate[0];
   }
+  else{
+    var newDate = splitDate[1] + "/" + splitDate[2] + "/" + splitDate[0];
+  }
+  
+  return newDate
+}
 
 const StarsToDisplay = (props) => {
   var rating = parseInt(props.text_input);
@@ -66,7 +65,6 @@ const TagOutput = (props) => {
 const CardBody = props => {
     const rows = props.characterData.map((row, index) => {
     var trimmed_name = trimString(row.event, 40);
-    //temporary remove this and put dynamic data.
     var tags = row.tags.split(",");
     var rating = row.rating;
     var date = row.date;

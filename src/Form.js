@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import App from './App';
-import handleSubmit from "./App"
 
 class Form extends Component {
   initialState = {
