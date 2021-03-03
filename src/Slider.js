@@ -8,7 +8,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 const Slider = props => {
     const [ value, setValue ] = useState(50); 
     return (
-        <body>
+        <body class="card_body">
             <div class="slidecontainer">
                 <label htmlFor="customRange1">Search Range</label>
                 <input type="range" min="1" max="100" value={value} onChange={changeEvent => setValue(changeEvent.target.value)}></input>

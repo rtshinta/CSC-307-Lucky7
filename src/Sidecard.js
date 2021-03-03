@@ -27,7 +27,7 @@ const Sidecard = props => {
         <Card.Text>
           Adjust what you want to see in your feed
         </Card.Text>
-        <DropdownButton title={value} className="dropdown1" onSelect={handleSelect}>
+        <DropdownButton title={value} className="dropdown1">
           <Dropdown.Item onClick={sortAscending} eventKey="Newest to Oldest &#9661;">Newest to Oldest</Dropdown.Item>
           <Dropdown.Divider />
           <Dropdown.Item onClick={sortDescending} eventKey="Oldest to Newest &#9661;">Oldest to Newest</Dropdown.Item>

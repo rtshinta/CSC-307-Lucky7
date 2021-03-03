@@ -376,11 +376,30 @@
     font: normal normal normal 1rem/1.6 -apple-system, BlinkMacSystemFont, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 1rem;
   }
+
+  .background_gradient {
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,160,255,1) 100%);
+  }
+
+  .card_body {
+    color: #404040;
+    background: white;
+    font-size: 1rem;
+  }
   
   body {
     color: #404040;
     background: white;
     font-size: 1rem;
+
+    /*background coloring legit*/
+    background: rgb(255,255,255);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,160,255,1) 100%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
   }
   
   p,
@@ -563,6 +582,7 @@
     padding: 0 1rem;
   }
   
+  /*this is where change sizing*/
   .container, .small-container, .medium-container {
     max-width: 80%;
     padding: 0 1rem;
