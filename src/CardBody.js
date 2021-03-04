@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './style.css';
 import { Card, Button, Tag, Row } from 'react-bootstrap';
+import Modal from 'react-bootstrap/Modal';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/Montserrat-Medium.ttf';
 import './CardBody.css';
@@ -63,6 +64,7 @@ const TagOutput = (props) => {
 }
 
 const CardBody = props => {
+    //const [modalShow, setModalShow] = React.useState(false);
     const rows = props.characterData.map((row, index) => {
     var trimmed_name = trimString(row.event, 40);
     var tags = row.tags.split(",");
