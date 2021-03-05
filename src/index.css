@@ -1056,7 +1056,7 @@
   }
 
 /*These controls form page inputs and button*/
-  .Form_page input[type=text] {
+  .Form_page input[type=text], .Form_page input[type=date] {
     margin: 1em;
     border-radius:25px;
     width:82%;
