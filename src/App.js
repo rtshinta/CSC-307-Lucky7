@@ -4,6 +4,7 @@ import Form from './Form'
 import axios from 'axios';
 import Sidecard from './Sidecard';
 import SearchBar from './SearchBar'
+import EventExpand from './EventExpand'
 
 import {
   BrowserRouter as Router,
@@ -11,10 +12,12 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { waitForElementToBeRemoved } from '@testing-library/react';
 
 class App extends Component {
 	state = {
-    characters: []
+    characters: [],
+    selected_Card: ' '
   };
 
   componentDidMount() {
@@ -234,14 +237,25 @@ class App extends Component {
     });
   }
 
+  setInfo = row => {
+    this.setState({
+      selected_Card: row,
+    });
+  }
 
   render() {
     const { characters } = this.state;
+    console.log(this.state);
+
     return (
+      <div class="background_gradient">
       <div className="container">
         <SearchBar searchFunction={this.handleSearch}/>
         <Router>
           <Switch>
+          <Route path="/eventdetails/:id">
+              <EventExpand CardInfo={this.state.selected_Card}></EventExpand>
+            </Route>
             <Route path="/about">
               <About />
             </Route>
@@ -249,11 +263,12 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories}/>
+              <Home setInfo={this.setInfo} characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories}/>
             </Route>
           </Switch>
         </Router>
         <br></br>
+      </div>
       </div>
     );
   }
@@ -278,7 +293,7 @@ const Home = (props) => {
     <div class="full_container">
     <div className="Homepage">
       <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories}/>
-      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
+      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} setInfo={props.setInfo}/>
     </div>
     </div>
   )
@@ -292,4 +307,3 @@ function About() {
   </div>
   )
 }
-

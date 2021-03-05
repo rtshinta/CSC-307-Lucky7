@@ -85,6 +85,7 @@
    */
   a {
     background-color: transparent;
+    text-decoration: none;
   }
   
   /**
@@ -380,6 +381,10 @@
   .background_gradient {
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,160,255,1) 100%);
+
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position: left top;
   }
 
   .card_body {
@@ -393,13 +398,13 @@
     background: white;
     font-size: 1rem;
 
-    /*background coloring legit*/
+    /* background coloring legit
     background: rgb(255,255,255);
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,160,255,1) 100%);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: cover; */
   }
   
   p,
@@ -493,13 +498,13 @@
   }
   
   a {
-    color: #0366ee;
+    color: black;
     text-decoration: none;
   }
   
   a:hover, a:active, a:focus {
-    color: #0246a2;
-    text-decoration: underline;
+    color: black;
+    text-decoration: none;
   }
   
   mark {

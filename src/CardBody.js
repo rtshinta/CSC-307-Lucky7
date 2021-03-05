@@ -4,6 +4,14 @@ import { Card, Button, Tag, Row } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/Montserrat-Medium.ttf';
 import './CardBody.css';
+import EventExpand from './EventExpand'
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 const trimString = (text_input, limit) => {
     var text_input2 = text_input.replace(/\n/g, '');
@@ -62,8 +70,10 @@ const TagOutput = (props) => {
   );
 }
 
+
 const CardBody = props => {
     const rows = props.characterData.map((row, index) => {
+
     var trimmed_name = trimString(row.event, 40);
     var tags = row.tags.split(",");
     var rating = row.rating;
@@ -71,21 +81,34 @@ const CardBody = props => {
     var location = row.location;
     var description = trimString(row.description, 25);
     var d = dayMonthYear(row.date);
+
       return (
+
+
         <li style={{padding: '20px'}}>
-        <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "400px", borderRadius: '2rem',}}>
-          <Card.Img style={{ height: '30%', objectFit: 'cover', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem'}} src={row.photo} />
-          <div style={{textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: '#1186F2'}}>{d}</div>
-            <Card.Body>
-              <Card.Title>{trimmed_name}</Card.Title>
-              <TagOutput tags_list={tags} ></TagOutput>
-              {/* <Card.Text>{description}</Card.Text> */}
-              <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>{location}</Card.Text>
-              <StarsToDisplay text_input={rating}></StarsToDisplay>
-              <Button style={{position: 'absolute', top: '5%', left: '80%', borderRadius: '5rem'}}  onClick={() => props.removeCharacter(index)}>X</Button>
-            </Card.Body>
-        </Card>
+          <div class="grow" style={{cursor: 'pointer',}}>
+
+          <Link to={{
+            pathname: "/eventdetails/:" + row.name,
+          }}  onClick={() => props.setInfo(row)}>
+
+                <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "400px", borderRadius: '2rem',}}>
+                  <Card.Img style={{ height: '30%', objectFit: 'cover', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem'}} src={row.photo} />
+                    <div style={{ textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: '#1186F2'}}>{d}</div>
+                      <Card.Body>
+                        <Card.Title>{trimmed_name}</Card.Title>
+                        <TagOutput tags_list={tags} ></TagOutput>
+                        <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>{location}</Card.Text>
+                        <StarsToDisplay text_input={rating}></StarsToDisplay>
+                        {/* <Button style={{position: 'absolute', top: '5%', left: '80%', borderRadius: '5rem'}}  onClick={() => props.removeCharacter(index)}>X</Button> */}
+                      </Card.Body>
+                </Card>
+
+              </Link>
+
+          </div>
         </li>
+
       )
     })
   

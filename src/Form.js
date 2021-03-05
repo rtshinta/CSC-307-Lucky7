@@ -86,7 +86,7 @@ class Form extends Component {
           id="rating"
           value={rating}
           onChange={this.handleChange} />
-        <input type="button" value="Submit" onClick={this.submitForm} />
+        <input href="/" type="button" value="Submit" onClick={this.submitForm} />
       </form>
     );
 }

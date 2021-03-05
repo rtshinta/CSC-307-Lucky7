@@ -1,0 +1,131 @@
+/*This is layout below*/
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0em 0em;
+    grid-template-areas:
+      "Carasoul"
+      "Description";
+  }
+  
+  .Carasoul { 
+      /* background-color: gainsboro; */
+      grid-area: Carasoul; 
+    }
+  
+  .Description { 
+      /* background-color: white; */
+      grid-area: Description; 
+    }
+
+
+/*===================================================*/
+
+/*This is styling below*/
+
+/*===================================================*/
+
+/*Carousel Styling*/
+
+.item, .img-placeholder
+{
+    height: 400px !important;
+    width:  500px !important;
+
+    background-color: white;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+/*Modifying Arrow button styling*/
+
+.carousel-control-prev-icon
+{
+    height: 50px;
+    width: 50px;
+    background-size: 100%, 100%;
+    border-radius: 50%;
+    background-color: #3A87EA;
+    background-image: url('EventExpand/left_arrow.png');
+}
+.carousel-control-next-icon
+{
+  height: 50px;
+  width: 50px;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  background-color: #3A87EA;
+  background-image: url('EventExpand/right_arrow.png');
+}
+
+.carousel-control-next-icon:after
+{
+  font-size: 55px;
+}
+
+.carousel-control-prev-icon:after {
+  font-size: 55px;
+}
+
+.carousel-control-next
+{
+    right: 20%;
+    opacity: 1;
+}
+.carousel-control-prev
+{
+    left: 20%;
+    opacity: 1;
+}
+
+/*Screen size shrink result in change in style for arrow buttons*/
+
+@media only screen and (max-width: 1200px) 
+{
+    .carousel-control-next
+    {
+        right: 5%;
+    }
+    .carousel-control-prev
+    {
+        left: 5%;
+    }
+}
+
+/*===================================================*/
+
+/*Description Styling*/
+
+.div-housing
+{
+  background-color: white;
+  border-radius: 25px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  border-radius: 25px;
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-text
+{
+  padding-left: 10%;
+  padding-top: 2%;
+  padding-bottom: 2%;
+}
+
+.header-text
+{
+  font-size: 20px;
+}
