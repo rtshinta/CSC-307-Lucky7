@@ -42,8 +42,8 @@ class SearchBar extends Component
                   value={currentInput} onChange={this.searchSubmit} placeholder="Search" style ={{width: '500px'}}/>
                 </div>
                 <button type="button" id="srchBtn" aria-label = "srchBtn" onClick={() => searchFunction(currentInput)}
-                style={{borderRadius:50,height:'40px',width:'40px',marginTop:'20px',marginLeft: '5px'}}>
-                  <i className="glyphicon glyphicon-search" style={{display:'flex', justifyContent:'center',alignItems:'center',fontSize:'17px'}}></i>
+                style={{borderRadius:50,height:'40px',width:'40px',/*marginTop:'20px',*/marginLeft: '5px'}}>
+                  <i class="glyphicon glyphicon-search" style={{display:'flex', justifyContent:'center',alignItems:'center',fontSize:'17px'}}></i>
                 </button>
               </form>
               <div className="btn-group">
