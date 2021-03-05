@@ -248,7 +248,6 @@ class App extends Component {
     console.log(this.state);
 
     return (
-      <div class="background_gradient">
       <div className="container">
         <SearchBar searchFunction={this.handleSearch}/>
         <Router>
@@ -267,8 +266,6 @@ class App extends Component {
             </Route>
           </Switch>
         </Router>
-        <br></br>
-      </div>
       </div>
     );
   }

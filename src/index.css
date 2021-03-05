@@ -378,15 +378,6 @@
     font-size: 1rem;
   }
 
-  .background_gradient {
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,160,255,1) 100%);
-
-    background-size: auto 100%;
-    background-repeat: no-repeat;
-    background-position: left top;
-  }
-
   .card_body {
     color: #404040;
     background: white;
@@ -395,16 +386,11 @@
   
   body {
     color: #404040;
-    background: white;
+    background: rgb(255, 255, 255);
     font-size: 1rem;
-
-    /* background coloring legit
-    background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,160,255,1) 100%);
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover; */
+    background-image: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgb(50, 180, 255) 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
   }
   
   p,
