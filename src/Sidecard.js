@@ -8,35 +8,34 @@ import './CardBody.css';
 
 const Sidecard = props => {
   const { sortAscending , sortDescending, sortRatingAsc, sortRatingDesc, sortCategories } = props;
-  const [value, setValue] = useState("Newest to Oldest \u25BD");
+  const [value, setValue] = useState("Newest to Oldest");
   const handleSelect=(e)=>{
     setValue(e)
   }
 
-  const [value2, setValue2] = useState("Highest to Lowest Rating \u25BD");
+  const [value2, setValue2] = useState("Highest to Lowest Rating");
   const handleSelect2=(e)=>{
     setValue2(e)
   }
 
 
     return (
-      <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '400px', height: "650px", borderRadius: '2rem',}}>
-      
+      <Card className="SideCard">
       <Card.Body>
         <Card.Title>Filters</Card.Title>
         <Card.Text>
           Adjust what you want to see in your feed
         </Card.Text>
-        <DropdownButton title={value} className="dropdown1">
-          <Dropdown.Item onClick={sortAscending} eventKey="Newest to Oldest &#9661;">Newest to Oldest</Dropdown.Item>
+        <DropdownButton title={value} className="dropdown1" onSelect={handleSelect}>
+          <Dropdown.Item onClick={sortAscending} eventKey="Newest to Oldest">Newest to Oldest</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item onClick={sortDescending} eventKey="Oldest to Newest &#9661;">Oldest to Newest</Dropdown.Item>
+          <Dropdown.Item onClick={sortDescending} eventKey="Oldest to Newest">Oldest to Newest</Dropdown.Item>
         </DropdownButton>
         <p></p>
         <DropdownButton  title={value2} className="dropdown1" onSelect={handleSelect2}>
-          <Dropdown.Item onClick={sortRatingDesc} eventKey="Highest to Lowest Rating &#9661;">Highest to Lowest Rating</Dropdown.Item>
+          <Dropdown.Item onClick={sortRatingDesc} eventKey="Highest to Lowest Rating">Highest to Lowest Rating</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item onClick={sortRatingAsc} eventKey="Lowest to Highest Rating &#9661;">Lowest to Highest Rating</Dropdown.Item>
+          <Dropdown.Item onClick={sortRatingAsc} eventKey="Lowest to Highest Rating">Lowest to Highest Rating</Dropdown.Item>
         </DropdownButton>
         <Slider />
         <Categories sortCategories={sortCategories}/>
