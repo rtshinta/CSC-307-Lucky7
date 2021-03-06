@@ -1,4 +1,8 @@
 /*Controls Category Filter tiles*/
+.CategoryFilters {
+  background-color: rgb(242, 242, 242) !important;
+}
+
 .Btn-Blue-BG {
   background-color: rgb(17, 134, 242) !important;
   border-color: rgb(17, 134, 242) !important;
