@@ -24,7 +24,7 @@ const Slider = props => {
             </Form>
                 <label htmlFor="customRange1">Search Range</label>
                 <input type="range" min="0" max="100" step="10" value={value} onChange={changeEvent => {setValue(changeEvent.target.value); handleDistance(value2, value)}}></input>
-                <div class="sliderval">Range: {value} miles</div>
+                <div onChange={console.log(value)} class="sliderval">Range: {value} miles</div>
             </div>
             
         </body>
