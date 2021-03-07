@@ -9,15 +9,18 @@ import EventExpand from './EventExpand'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { waitForElementToBeRemoved } from '@testing-library/react';
 
 class App extends Component {
 	state = {
     characters: [],
+    zipcode: [],
+    categories: [],
+    prev_characters: [],
     selected_Card: ' '
+
   };
 
   componentDidMount() {
@@ -59,6 +62,21 @@ class App extends Component {
     });
   }
 
+  handleDistance = (zipcode, range) => {
+    this.makeDistanceCall(zipcode, range).then( callResult => {
+      if (callResult === true){
+        axios.get('http://localhost:5000/zipcodes?zipcode=' + zipcode + '&range=' + range)
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+
+      }
+    })
+  }
+
+  
+
   makePostCall(character){
     return axios.post('http://localhost:5000/users', character)
      .then(function (response) {
@@ -71,7 +89,17 @@ class App extends Component {
      });
   }
 
-
+  makeDistanceCall(zipcode, range){
+    return axios.get('http://localhost:5000/zipcodes?zipcode=' + zipcode + '&range=' + range)
+    .then(function (response) {
+      console.log(response);
+      return (response.status === 200);
+    })
+    .catch(function (error){
+      console.log(error);
+      return false;
+    })
+  }
 
 
   makeDeleteCall(index){
@@ -109,7 +137,7 @@ class App extends Component {
         characters: previous_characters,
       });
 
-      if(textString != '')
+      if(textString !== '')
       {
         const characters = this.state.characters.filter(character => character.event.toLowerCase().includes(textString.toLowerCase()))
         this.setState({ characters });
@@ -124,14 +152,127 @@ class App extends Component {
     })
   }
 
+  /*calculateDistance = (zipcode, range) => {
+    if(this.state.categories.length > 0){
+    axios.get('http://localhost:5000/user_zipcode?zipcode=' + zipcode)
+    .then(res => {
+      const coordinates = res.data.users_list;
+      this.setState({
+        zipcode: coordinates,
+      });
+      if(zipcode.length == 0 || typeof range == 'undefined'){
+        axios.get('http://localhost:5000/users')
+        .then(res => {
+          const previous_characters = res.data.users_list;
+          this.setState({
+            characters: previous_characters,
+          });
+        })
+      }
+      var characters = [];
+      var c = this.state.prev_characters;
+      for(var i=0; i < this.state.characters.length; i++){
+        if (this.state.zipcode[0] == this.state.characters[i]['latitude'] && this.state.zipcode[1] == this.state.characters[i]['longitude']){
+          characters.push(this.state.characters[i]);
+        }
+        else{
+          var radlat1 = Math.PI * this.state.zipcode[0]/180;
+          var radlat2 = Math.PI * this.state.characters[i]['latitude']/180;
+          var theta = this.state.zipcode[1]-this.state.characters[i]['longitude'];
+          var radtheta = Math.PI * theta/180;
+          var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+          if (dist > 1) {
+            dist = 1;
+          }
+          dist = Math.acos(dist);
+          dist = dist * 180/Math.PI;
+          dist = dist * 60 * 1.1515;
+
+          var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
+          tags = tags.map(v => v.trim());
+          //console.log(tags);
+
+          if (dist <= range && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
+            characters.push(this.state.characters[i]);
+          }
+        }
+      }
+      this.setState({
+        characters: characters,
+      });
+    })}
+    else{
+      this.handleDistance(zipcode, range);
+    }
+  }*/
+
+  calculateDistance = (zipcode, range) => {
+    if(this.state.categories.length > 0){
+    axios.get('http://localhost:5000/user_zipcode?zipcode=' + zipcode)
+    .then(res => {
+      const coordinates = res.data.users_list;
+      this.setState({
+        zipcode: coordinates,
+      });
+      if(zipcode.length == 0 || typeof range == 'undefined'){
+        axios.get('http://localhost:5000/users')
+        .then(res => {
+          const previous_characters = res.data.users_list;
+          this.setState({
+            characters: previous_characters,
+          });
+        })
+      }
+      var characters = [];
+      var c = this.state.prev_characters;
+      for(var i=0; i < this.state.prev_characters.length; i++){
+        var tags = this.state.prev_characters[i]['tags'].split(",").map(v => v.toLowerCase());
+        tags = tags.map(v => v.trim());
+        if (this.state.zipcode[0] == this.state.prev_characters[i]['latitude'] && this.state.zipcode[1] == this.state.prev_characters[i]['longitude'] && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
+          characters.push(this.state.prev_characters[i]);
+        }
+        else{
+          var radlat1 = Math.PI * this.state.zipcode[0]/180;
+          var radlat2 = Math.PI * this.state.prev_characters[i]['latitude']/180;
+          var theta = this.state.zipcode[1]-this.state.prev_characters[i]['longitude'];
+          var radtheta = Math.PI * theta/180;
+          var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+          if (dist > 1) {
+            dist = 1;
+          }
+          dist = Math.acos(dist);
+          dist = dist * 180/Math.PI;
+          dist = dist * 60 * 1.1515;
+
+          
+          //console.log(tags);
+
+          if (dist <= range && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
+            characters.push(this.state.prev_characters[i]);
+          }
+        }
+      }
+      this.setState({
+        characters: characters,
+      });
+    })}
+    else{
+      this.handleDistance(zipcode, range);
+    }
+  }
+
+  
+
   handleCategories = (categories) => {
     axios.get('http://localhost:5000/users')
     .then(res => {
       const previous_characters = res.data.users_list;
       this.setState({
         characters: previous_characters,
+        categories: categories,
+        prev_characters: previous_characters,
       });
-      if(categories.length != 0)
+      if(categories.length !== 0)
       {
         var characters = [];
         //console.log(categories.some(r=>['Concert', 'Clothing', 'Help', 'food truck'].indexOf(r) >= 0));
@@ -139,18 +280,20 @@ class App extends Component {
         for(var i=0; i < this.state.characters.length; i++){
           var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
           tags = tags.map(v => v.trim());
-          console.log(tags);
+          //console.log(tags);
           if(categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
             characters.push(this.state.characters[i]);
           }
         }
 
         this.setState({ characters });
+        //this.setState({ categories: categories});
       }
       else
       {
         this.setState({
           characters: previous_characters,
+          categories: [],
         });
       }
 
@@ -200,8 +343,8 @@ class App extends Component {
   sortByRating = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.rating;
+      var nameB = b.rating;
       if (nameA < nameB) {
         return -1;
       }
@@ -220,8 +363,8 @@ class App extends Component {
   sortByRatingDesc = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.rating;
+      var nameB = b.rating;
       if (nameA > nameB) {
         return -1;
       }
@@ -243,6 +386,32 @@ class App extends Component {
     });
   }
 
+  makePatchCall(id, data){
+    const id_to_patch = id
+
+    return axios.patch('http://localhost:5000/users/' + id_to_patch, data)
+     .then(function (response) {
+       console.log(response);
+       return (response.status === 200);
+     })
+     .catch(function (error) {
+       console.log(error);
+       return false;
+     });
+  }
+
+  handlePatch = (id,data) => {
+    this.makePatchCall(id,data).then( callResult => {
+      if (callResult === true) {
+        axios.get('http://localhost:5000/users')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+   });
+  }
+
   render() {
     const { characters } = this.state;
     console.log(this.state);
@@ -253,7 +422,7 @@ class App extends Component {
         <Router>
           <Switch>
           <Route path="/eventdetails/:id">
-              <EventExpand CardInfo={this.state.selected_Card}></EventExpand>
+              <EventExpand CardInfo={this.state.selected_Card} handlePatch={this.handlePatch}></EventExpand>
             </Route>
             <Route path="/about">
               <About />
@@ -262,7 +431,15 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home setInfo={this.setInfo} characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories}/>
+              <Home setInfo={this.setInfo} 
+              characterData={characters} 
+              removeCharacter={this.removeCharacter} 
+              sortAscending={this.sortCharacterList} 
+              sortDescending={this.sortCharacterListDesc} 
+              sortRatingAscending={this.sortByRating} 
+              sortRatingDescending={this.sortByRatingDesc} 
+              handleCategories={this.handleCategories}
+              handleDistance={this.calculateDistance}/>
             </Route>
           </Switch>
         </Router>
@@ -289,7 +466,7 @@ const Home = (props) => {
   return (
     <div class="full_container">
     <div className="Homepage">
-      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories}/>
+      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories} handleDistance={props.handleDistance}/>
       <Table characterData={props.characterData} removeCharacter={props.removeCharacter} setInfo={props.setInfo}/>
     </div>
     </div>
