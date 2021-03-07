@@ -13,12 +13,12 @@ const Slider = props => {
     return (
         <body class="card_body">
             <div class="slidecontainer">
-            <Form>
+            <Form className="zipcode_elements">
                 <Form.Group controlId="zipcode">
-                <Form.Label>Enter your Zip Code</Form.Label>
+                {/* <Form.Label>Enter your Zip Code</Form.Label> */}
                 <Form.Control value2={value2} onChange={e => setValue2(e.target.value)} type="text" placeholder="Zip Code"/>
                 </Form.Group>
-                <Button variant="primary" type="button" onClick={() => handleDistance(value2, value)}>
+                <Button size="sm" variant="primary" type="button" onClick={() => handleDistance(value2, value)}>
                 Submit
                 </Button>
             </Form>

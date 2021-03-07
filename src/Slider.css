@@ -1,17 +1,37 @@
 .slidecontainer {
-    width: 100%;
-    background-color: rgb(242, 242, 242);
-    margin-top: 0.7em; 
-  }
+  width: 100%;
+  background-color: rgb(242, 242, 242);
+  margin-top: 0.7em; 
+}
 
-  .sliderval {
-    margin-top: 0.25em;
-    font-size: 1em;
-  }
+.zipcode_elements {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto;
+}
 
+.sliderval {
+  margin-top: 0.25em;
+  font-size: 1em;
+}
 
+/*Zip code entry box and buttons below*/
+.zipcode_elements .form-group input[type="text"] {
+  margin-top: 10px;
+  width: 90%;
+}
 
-  
-  
-  
-  
+.zipcode_elements button {
+  background-color: rgb(17, 134, 242) !important;
+  border-color: rgb(17, 134, 242) !important;
+  outline: none !important;
+  border-radius: 0.75em !important;
+  margin-top: 10px;
+  height: 38px;
+}
+
+.zipcode_elements button:hover {
+  background-color: rgb(69, 167, 239) !important;
+  border-color: rgb(69, 167, 239) !important;
+  box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
+}
