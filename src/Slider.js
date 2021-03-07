@@ -11,7 +11,7 @@ const Slider = props => {
     const [ value, setValue ] = useState(50); 
     const [ value2, setValue2 ] = useState("");
     return (
-        <body>
+        <body class="card_body">
             <div class="slidecontainer">
             <Form>
                 <Form.Group controlId="zipcode">
