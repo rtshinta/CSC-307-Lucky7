@@ -59,7 +59,7 @@ class SearchBar extends Component
                   <input type="text" name="currentInput" id="currentInput" class = "form-control" 
                   value={currentInput} onChange={this.searchSubmit} placeholder="Search" style ={{width: '500px'}}/>
                 </div>
-                <button type="button" onClick={() => this.props.searchFunction(currentInput)}
+                <button type="button" id="srchBtn" aria-label = "srchBtn" onClick={() => searchFunction(currentInput)}
                 style={{borderRadius:50,height:'40px',width:'40px',marginLeft: '5px'}}>
                   <i class="glyphicon glyphicon-search" style={{display:'flex', justifyContent:'center',alignItems:'center',fontSize:'17px'}}></i>
                 </button>

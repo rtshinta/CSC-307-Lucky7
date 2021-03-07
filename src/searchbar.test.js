@@ -20,8 +20,8 @@ test('tests to see if search button renders and clicks correctly', () =>
     const searchFunction = jest.fn();
     const searchbar = render(<SearchBar searchFunction={searchFunction} />);
     const textInput = searchbar.getByRole('textbox');
-    const srchBtn = searchbar.getByRole('button', {name: /srchBtn/i})
-    
+    const srchBtn = searchbar.getByRole('button', {name: /srchBtn/i});
+
     fireEvent.click(srchBtn);
     expect(searchFunction).toHaveBeenCalledTimes(1)
 
