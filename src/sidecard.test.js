@@ -153,7 +153,7 @@ test('test Most to Least Liked dropdown button appears after being clicked', () 
     const sortRatingDesc = jest.fn();
     const sortCategories = jest.fn();
     const sidecard = render(<Sidecard />);
-    const dropdown = sidecard.getByText("Most to Least Least ▽");
+    const dropdown = sidecard.getByText("Most to Least Liked ▽");
     fireEvent.click(dropdown);
     const highToLow = sidecard.getByRole('button', {
         name: 'Most to Least Liked'
