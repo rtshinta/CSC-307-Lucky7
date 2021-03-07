@@ -4,13 +4,14 @@ import Form from './Form'
 import axios from 'axios';
 import Sidecard from './Sidecard';
 import SearchBar from './SearchBar'
+import EventExpand from './EventExpand'
 
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
+import { waitForElementToBeRemoved } from '@testing-library/react';
 
 class App extends Component {
 	state = {
@@ -19,6 +20,7 @@ class App extends Component {
     categories: [],
     prev_characters: [],
     range: -1,
+    selected_Card: ' ',
   };
 
   componentDidMount() {
@@ -135,7 +137,7 @@ class App extends Component {
         characters: previous_characters,
       });
 
-      if(textString != '')
+      if(textString !== '')
       {
         const characters = this.state.characters.filter(character => character.event.toLowerCase().includes(textString.toLowerCase()))
         this.setState({ characters });
@@ -283,7 +285,7 @@ class App extends Component {
         categories: categories,
         prev_characters: previous_characters,
       });
-      if(categories.length != 0)
+      if(categories.length !== 0)
       {
         var characters = [];
         //console.log(categories.some(r=>['Concert', 'Clothing', 'Help', 'food truck'].indexOf(r) >= 0));
@@ -354,8 +356,8 @@ class App extends Component {
   sortByRating = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.rating;
+      var nameB = b.rating;
       if (nameA < nameB) {
         return -1;
       }
@@ -374,8 +376,8 @@ class App extends Component {
   sortByRatingDesc = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.rating;
+      var nameB = b.rating;
       if (nameA > nameB) {
         return -1;
       }
@@ -391,14 +393,50 @@ class App extends Component {
     });
   }
 
+  setInfo = row => {
+    this.setState({
+      selected_Card: row,
+    });
+  }
+
+  makePatchCall(id, data){
+    const id_to_patch = id
+
+    return axios.patch('http://localhost:5000/users/' + id_to_patch, data)
+     .then(function (response) {
+       console.log(response);
+       return (response.status === 200);
+     })
+     .catch(function (error) {
+       console.log(error);
+       return false;
+     });
+  }
+
+  handlePatch = (id,data) => {
+    this.makePatchCall(id,data).then( callResult => {
+      if (callResult === true) {
+        axios.get('http://localhost:5000/users')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+   });
+  }
 
   render() {
     const { characters } = this.state;
+    console.log(this.state);
+
     return (
       <div className="container">
         <SearchBar searchFunction={this.handleSearch}/>
         <Router>
           <Switch>
+          <Route path="/eventdetails/:id">
+              <EventExpand CardInfo={this.state.selected_Card} handlePatch={this.handlePatch}></EventExpand>
+            </Route>
             <Route path="/about">
               <About />
             </Route>
@@ -406,11 +444,18 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories} handleDistance={this.calculateDistance}/>
+              <Home setInfo={this.setInfo} 
+              characterData={characters} 
+              removeCharacter={this.removeCharacter} 
+              sortAscending={this.sortCharacterList} 
+              sortDescending={this.sortCharacterListDesc} 
+              sortRatingAscending={this.sortByRating} 
+              sortRatingDescending={this.sortByRatingDesc} 
+              handleCategories={this.handleCategories}
+              handleDistance={this.calculateDistance}/>
             </Route>
           </Switch>
         </Router>
-        <br></br>
       </div>
     );
   }
@@ -432,9 +477,11 @@ const EventForm = (props) => {
 
 const Home = (props) => {
   return (
+    <div class="full_container">
     <div className="Homepage">
       <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories} handleDistance={props.handleDistance}/>
-      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} />
+      <Table characterData={props.characterData} removeCharacter={props.removeCharacter} setInfo={props.setInfo}/>
+    </div>
     </div>
   )
 }
@@ -447,4 +494,3 @@ function About() {
   </div>
   )
 }
-

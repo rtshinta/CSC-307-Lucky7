@@ -12,15 +12,15 @@ test('test Newest to Oldest dropdown option', () => {
     expect(dropdown.innerHTML).toBe("Newest to Oldest ▽");
 });
 
-test('test Highest to Lowest dropdown option', () => {
+test('test Most to Least Liked dropdown option', () => {
     const sortAscending = jest.fn();
     const sortDescending = jest.fn();
     const sortRatingAsc = jest.fn();
     const sortRatingDesc = jest.fn();
     const sortCategories = jest.fn();
     const sidecard = render(<Sidecard />);
-    const dropdown = sidecard.getByText("Highest to Lowest Rating ▽");
-    expect(dropdown.innerHTML).toBe("Highest to Lowest Rating ▽");
+    const dropdown = sidecard.getByText("Most to Least Liked ▽");
+    expect(dropdown.innerHTML).toBe("Most to Least Liked ▽");
 });
 
 test('test Sidecard sorting 0 times', () => {
@@ -146,22 +146,22 @@ test('test newest to oldest dropdown button appears after being clicked and clic
     expect(sortAscending).toHaveBeenCalledTimes(1);
 });
 
-test('test highest to lowest rating dropdown button appears after being clicked', () => {
+test('test Most to Least Liked dropdown button appears after being clicked', () => {
     const sortAscending = jest.fn();
     const sortDescending = jest.fn();
     const sortRatingAsc = jest.fn();
     const sortRatingDesc = jest.fn();
     const sortCategories = jest.fn();
     const sidecard = render(<Sidecard />);
-    const dropdown = sidecard.getByText("Highest to Lowest Rating ▽");
+    const dropdown = sidecard.getByText("Most to Least Liked ▽");
     fireEvent.click(dropdown);
     const highToLow = sidecard.getByRole('button', {
-        name: 'Highest to Lowest Rating'
+        name: 'Most to Least Liked'
       });
-    expect(highToLow.innerHTML).toBe('Highest to Lowest Rating');
+    expect(highToLow.innerHTML).toBe('Most to Least Liked');
 });
 
-test('test highest to lowest rating dropdown button appears after being clicked and click button', () => {
+test('test Most to Least Liked dropdown button appears after being clicked and click button', () => {
     const sortAscending = jest.fn();
     const sortDescending = jest.fn();
     const sortRatingAsc = jest.fn();
@@ -169,32 +169,32 @@ test('test highest to lowest rating dropdown button appears after being clicked 
     const sortCategories = jest.fn();
     const sidecard = render(<Sidecard sortAscending={sortAscending} sortDescending={sortDescending} sortRatingAsc={sortRatingAsc}
         sortRatingDesc={sortRatingDesc} sortCategories={sortCategories} />);
-    const dropdown = sidecard.getByText("Highest to Lowest Rating ▽");
+    const dropdown = sidecard.getByText("Most to Least Liked ▽");
     fireEvent.click(dropdown);
     const highToLow = sidecard.getByRole('button', {
-        name: 'Highest to Lowest Rating'
+        name: 'Most to Least Liked'
       });
     fireEvent.click(highToLow);
     expect(sortRatingDesc).toHaveBeenCalledTimes(1);
 });
 
 
-test('test lowest to highest rating dropdown button appears after being clicked', () => {
+test('test Least to Most Liked rating dropdown button appears after being clicked', () => {
     const sortAscending = jest.fn();
     const sortDescending = jest.fn();
     const sortRatingAsc = jest.fn();
     const sortRatingDesc = jest.fn();
     const sortCategories = jest.fn();
     const sidecard = render(<Sidecard />);
-    const dropdown = sidecard.getByText("Highest to Lowest Rating ▽");
+    const dropdown = sidecard.getByText("Most to Least Liked ▽");
     fireEvent.click(dropdown);
     const oldToNew = sidecard.getByRole('button', {
-        name: 'Lowest to Highest Rating'
+        name: 'Least to Most Liked'
       });
-    expect(oldToNew.innerHTML).toBe('Lowest to Highest Rating');
+    expect(oldToNew.innerHTML).toBe('Least to Most Liked');
 });
 
-test('test lowest to highest rating dropdown button appears after being clicked and click button', () => {
+test('test Least to Most Liked dropdown button appears after being clicked and click button', () => {
     const sortAscending = jest.fn();
     const sortDescending = jest.fn();
     const sortRatingAsc = jest.fn();
@@ -202,10 +202,10 @@ test('test lowest to highest rating dropdown button appears after being clicked 
     const sortCategories = jest.fn();
     const sidecard = render(<Sidecard sortAscending={sortAscending} sortDescending={sortDescending} sortRatingAsc={sortRatingAsc}
         sortRatingDesc={sortRatingDesc} sortCategories={sortCategories} />);
-    const dropdown = sidecard.getByText("Highest to Lowest Rating ▽");
+    const dropdown = sidecard.getByText("Most to Least Liked ▽");
     fireEvent.click(dropdown);
     const lowToHigh = sidecard.getByRole('button', {
-        name: 'Lowest to Highest Rating'
+        name: 'Least to Most Liked'
       });
     fireEvent.click(lowToHigh);
     expect(sortRatingAsc).toHaveBeenCalledTimes(1);

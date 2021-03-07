@@ -55,7 +55,7 @@ const Categories = props => {
     }
     
     return (
-        <body>
+        <body class="card_body">
             <label htmlFor="categoryFilters">Category Filters</label>
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange} >
