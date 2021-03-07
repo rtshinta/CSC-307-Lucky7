@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import './style.css';
 import { Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -48,6 +48,7 @@ const TagOutput = (props) => {
 
 
 const CardBody = props => {
+    //const [modalShow, setModalShow] = React.useState(false);
     const rows = props.characterData.map((row, index) => {
 
     var trimmed_name = trimString(row.event, 40);

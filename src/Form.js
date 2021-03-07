@@ -9,6 +9,7 @@ class Form extends Component {
     photo: '',
     tags: '',
     rating: '',
+    zipcode: '',
   };
 
   state = this.initialState;
@@ -31,7 +32,7 @@ class Form extends Component {
   }
 
   render() {
-    const { event, description, location, date, photo, tags, rating } = this.state;
+    const { event, description, location, date, photo, tags, rating, zipcode } = this.state;
   
     return (
       <form className="Form_page">
@@ -56,6 +57,13 @@ class Form extends Component {
           name="location"
           id="location"
           value={location}
+          onChange={this.handleChange} />
+        <label htmlFor="zipcode">Zip Code</label>
+        <input
+          type="text"
+          name="zipcode"
+          id="zipcode"
+          value={zipcode}
           onChange={this.handleChange} />
         <label htmlFor="date">Date</label>
         <input
