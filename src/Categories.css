@@ -1,26 +1,30 @@
-/*Controls Category Filter tiles*/
 .CategoryFilters {
   background-color: rgb(242, 242, 242) !important;
 }
 
+/*Controls Category Filter tiles*/
 .Btn-Blue-BG {
   background-color: rgb(17, 134, 242) !important;
   border-color: rgb(17, 134, 242) !important;
   border-radius: 0.75em !important;
   outline: none !important;
+  margin-right: 0.7em;
+  filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.4)) !important;
 }
 
 .Btn-Blue-BG:hover {
-  background-color: rgb(0, 195, 255) !important;
-  border-color: rgb(0, 195, 255) !important;
+  background-color: rgb(69, 167, 239) !important;
+  border-color: rgb(69, 167, 239) !important;
 }
 
 .Btn-Blue-BG.active {
-  background-color: rgb(0, 255, 255) !important;
-  border-color: rgb(0, 255, 255) !important;
-  color: black !important;
+  background-color: rgba(100, 185, 237) !important;
+  border-color: rgb(100, 185, 237) !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 0.3em 0.5em 0px inset !important;
+  filter: none !important;
 }
 
 .Btn-Blue-BG.focus {
-  box-shadow: none !important;
+  box-shadow: none;
+  /* box-shadow: rgba(0, 0, 0, 0.25) 0px 0.3em 0.5em 0px inset !important; */
 }

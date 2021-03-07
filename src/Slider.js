@@ -10,7 +10,7 @@ const Slider = props => {
     return (
         <body class="card_body">
             <div class="slidecontainer">
-                <label htmlFor="customRange1">Search Range</label>
+                {/* <label htmlFor="customRange1">Search Range</label> */}
                 <input type="range" min="1" max="100" value={value} onChange={changeEvent => setValue(changeEvent.target.value)}></input>
                 <div class="sliderval">Range: {value} miles</div>
             </div>

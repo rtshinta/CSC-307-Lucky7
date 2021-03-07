@@ -50,7 +50,7 @@ class SearchBar extends Component
           <div class="container-fluid" style = {{padding:'0px'}}>
               <div class="navbar-header">
                   <a class="navbar-brand" href="http://localhost:3000/">
-                      <img src= "logo_icon.png" style={{display:'flex', justifyContent:'center',alignItems:'center',marginTop:'1px',height:"50px"}}/>
+                      <img src="logo_icon.png"/>
                   </a>
               </div>
               <form class="navbar-form navbar-right">

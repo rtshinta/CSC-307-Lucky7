@@ -388,7 +388,7 @@ body {
   color: #404040;
   background: rgb(255, 255, 255);
   font-size: 1rem;
-  background-image: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(161, 210, 255, 1) 100%);
+  background-image: linear-gradient(180deg, rgba(255,255,255,1) 10%, rgba(161, 210, 255, 1) 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -576,7 +576,6 @@ dd {
 /*this is where change sizing*/
 .container, .small-container, .medium-container {
   max-width: 80%;
-  padding: 0 1rem;
   margin-left: auto;
   margin-right: auto;
 }
