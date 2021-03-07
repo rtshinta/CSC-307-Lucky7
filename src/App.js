@@ -9,8 +9,7 @@ import EventExpand from './EventExpand'
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import { waitForElementToBeRemoved } from '@testing-library/react';
 
@@ -109,7 +108,7 @@ class App extends Component {
         characters: previous_characters,
       });
 
-      if(textString != '')
+      if(textString !== '')
       {
         const characters = this.state.characters.filter(character => character.event.toLowerCase().includes(textString.toLowerCase()))
         this.setState({ characters });
@@ -131,7 +130,7 @@ class App extends Component {
       this.setState({
         characters: previous_characters,
       });
-      if(categories.length != 0)
+      if(categories.length !== 0)
       {
         var characters = [];
         //console.log(categories.some(r=>['Concert', 'Clothing', 'Help', 'food truck'].indexOf(r) >= 0));
@@ -200,8 +199,8 @@ class App extends Component {
   sortByRating = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.rating;
+      var nameB = b.rating;
       if (nameA < nameB) {
         return -1;
       }
@@ -220,8 +219,8 @@ class App extends Component {
   sortByRatingDesc = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.rating.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.rating.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.rating;
+      var nameB = b.rating;
       if (nameA > nameB) {
         return -1;
       }
@@ -243,6 +242,32 @@ class App extends Component {
     });
   }
 
+  makePatchCall(id, data){
+    const id_to_patch = id
+
+    return axios.patch('http://localhost:5000/users/' + id_to_patch, data)
+     .then(function (response) {
+       console.log(response);
+       return (response.status === 200);
+     })
+     .catch(function (error) {
+       console.log(error);
+       return false;
+     });
+  }
+
+  handlePatch = (id,data) => {
+    this.makePatchCall(id,data).then( callResult => {
+      if (callResult === true) {
+        axios.get('http://localhost:5000/users')
+        .then(response => {
+          const characters = response.data.users_list;
+          this.setState({ characters });
+        })
+      }
+   });
+  }
+
   render() {
     const { characters } = this.state;
     console.log(this.state);
@@ -253,7 +278,7 @@ class App extends Component {
         <Router>
           <Switch>
           <Route path="/eventdetails/:id">
-              <EventExpand CardInfo={this.state.selected_Card}></EventExpand>
+              <EventExpand CardInfo={this.state.selected_Card} handlePatch={this.handlePatch}></EventExpand>
             </Route>
             <Route path="/about">
               <About />
@@ -262,7 +287,14 @@ class App extends Component {
               <EventForm handleSubmit={this.handleSubmit}  />
             </Route>
             <Route path="/">
-              <Home setInfo={this.setInfo} characterData={characters} removeCharacter={this.removeCharacter} sortAscending={this.sortCharacterList} sortDescending={this.sortCharacterListDesc} sortRatingAscending={this.sortByRating} sortRatingDescending={this.sortByRatingDesc} handleCategories={this.handleCategories}/>
+              <Home setInfo={this.setInfo} 
+              characterData={characters} 
+              removeCharacter={this.removeCharacter} 
+              sortAscending={this.sortCharacterList} 
+              sortDescending={this.sortCharacterListDesc} 
+              sortRatingAscending={this.sortByRating} 
+              sortRatingDescending={this.sortByRatingDesc} 
+              handleCategories={this.handleCategories}/>
             </Route>
           </Switch>
         </Router>
