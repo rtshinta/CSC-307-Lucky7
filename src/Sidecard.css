@@ -1,3 +1,60 @@
-.dropdown1{
-    width: 10px !important;
+.SideCard{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 300px;
+    height: 725px;
+    border-radius: 2rem;
+    margin-top:20px;
+    background-color: rgb(242, 242, 242);
+}
+
+.SideCard .card-title {
+    font-size: 2.5em !important;
+    font-weight: 300 !important;
+    margin-bottom: 0.5em !important;
+    margin-top: 0em !important;
+}
+
+.SideCard .card-subtitle {
+    font-size: 1.5em !important;
+    font-weight: 300 !important;
+    /* margin-top: 1em !important; */
+}
+
+.SideCard .Categories.card-subtitle {
+    margin-top: 1em !important;
+}
+
+/*Controls Dropdown filters*/
+.dropdown1 button {
+    background-color: rgb(17, 134, 242) !important;
+    border-color: rgb(17, 134, 242) !important;
+    border-radius: 0.75em !important;
+    outline: none !important;
+    filter: drop-shadow(0 0.2rem 0.25rem rgba(0, 0, 0, 0.4));
+    margin-bottom: 2em !important;
+    width: 100%;
+}
+
+.dropdown1 button:hover {
+    background-color: rgb(69, 167, 239) !important;
+    border-color: rgb(69, 167, 239) !important;
+    box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
+}
+
+.dropdown1 button[aria-expanded="true"] {
+    background-color: rgb(69, 167, 239) !important;
+    border-color: rgb(69, 167, 239) !important;
+    box-shadow: none !important;
+}
+
+.dropdown1 button[aria-expanded="true"]:hover {
+    box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
+}
+
+.dropdown1 button[aria-expanded="false"] {
+    box-shadow: none !important;
+}
+
+.dropdown1 button[aria-expanded="false"]:hover {
+    box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
 }

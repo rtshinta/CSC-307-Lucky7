@@ -55,61 +55,72 @@ const Categories = props => {
     }
     
     return (
-        <body class="card_body">
-            <label htmlFor="categoryFilters">Category Filters</label>
+        <body className="card_body CategoryFilters">
+            {/* <label htmlFor="categoryFilters">Category Filters</label> */}
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange} >
                 <ToggleButton  checked={checked} onChange={() => {handleMultipleCategories(checked, "Clothing"); handleChecked();}} className="Btn-Blue-BG" value={1}>Clothing/Apparel</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton  checked2={checked2} onChange={() => {handleMultipleCategories(checked2, "Farmers Market"); handleChecked2();}} className="Btn-Blue-BG" value={2}>Farmers Market</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton  checked3={checked3} onChange={() => {handleMultipleCategories(checked3, "Food Truck"); handleChecked3();}} className="Btn-Blue-BG" value={3}>Food Truck</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <br></br>
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton checked4={checked4} onChange={() => {handleMultipleCategories(checked4, "Concert"); handleChecked4();}}  className="Btn-Blue-BG" value={4}>Concerts</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked5={checked5} onChange={() => {handleMultipleCategories(checked5, "Immersive Experience"); handleChecked5();}} className="Btn-Blue-BG" value={5}>Immersive Experience</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked6={checked6} onChange={() => {handleMultipleCategories(checked6, "Art"); handleChecked6();}} className="Btn-Blue-BG" value={6}>Art</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <br></br>
-            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked7={checked7} onChange={() => {handleMultipleCategories(checked7, "Flea Market"); handleChecked7();}}className="Btn-Blue-BG" value={7}>Flea Market</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked8={checked8} onChange={() => {handleMultipleCategories(checked8, "Educational"); handleChecked8();}} className="Btn-Blue-BG" value={8}>Educational</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked9={checked9} onChange={() => {handleMultipleCategories(checked9, "Sports"); handleChecked9();}} className="Btn-Blue-BG" value={9}>Athletic/Sports</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <br></br>
-            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked2={checked10} onChange={() => {handleMultipleCategories(checked10, "Automotive"); handleChecked10();}} className="Btn-Blue-BG" value={10}>Automotive</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton checked11={checked11} onChange={() => {handleMultipleCategories(checked11, "Gaming"); handleChecked11();}} className="Btn-Blue-BG" value={11}>Gaming</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked12={checked12} onChange={() => {handleMultipleCategories(checked12, "Jewelry"); handleChecked12();}} className="Btn-Blue-BG" value={12}>Jewelry</ToggleButton>
-            </ToggleButtonGroup>{' '}
+                <ToggleButton checked5={checked5} onChange={() => {handleMultipleCategories(checked5, "Immersive Experience"); handleChecked5();}} className="Btn-Blue-BG" value={5}>Immersive Experience</ToggleButton>
+            </ToggleButtonGroup>
+                        
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton checked13={checked13} onChange={() => {handleMultipleCategories(checked13, "For Kids"); handleChecked13();}} className="Btn-Blue-BG" value={13}>For Kids</ToggleButton>
-            </ToggleButtonGroup>{' '}
-            <br></br>
+            </ToggleButtonGroup>
+
+            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
+                <ToggleButton checked6={checked6} onChange={() => {handleMultipleCategories(checked6, "Art"); handleChecked6();}} className="Btn-Blue-BG" value={6}>Art</ToggleButton>
+            </ToggleButtonGroup>
+            
+            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
+                <ToggleButton checked7={checked7} onChange={() => {handleMultipleCategories(checked7, "Flea Market"); handleChecked7();}}className="Btn-Blue-BG" value={7}>Flea Market</ToggleButton>
+            </ToggleButtonGroup>
+            
+            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
+                <ToggleButton checked8={checked8} onChange={() => {handleMultipleCategories(checked8, "Educational"); handleChecked8();}} className="Btn-Blue-BG" value={8}>Educational</ToggleButton>
+            </ToggleButtonGroup>
+
+            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
+                <ToggleButton checked9={checked9} onChange={() => {handleMultipleCategories(checked9, "Sports"); handleChecked9();}} className="Btn-Blue-BG" value={9}>Athletic/Sports</ToggleButton>
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton checked14={checked14} onChange={() => {handleMultipleCategories(checked14, "Cultural Festivals"); handleChecked14();}} className="Btn-Blue-BG" value={14}>Cultural Festivals</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
+                        
+            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
+                <ToggleButton checked12={checked12} onChange={() => {handleMultipleCategories(checked12, "Jewelry"); handleChecked12();}} className="Btn-Blue-BG" value={12}>Jewelry</ToggleButton>
+            </ToggleButtonGroup>
+            
+            <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
+                <ToggleButton checked2={checked10} onChange={() => {handleMultipleCategories(checked10, "Automotive"); handleChecked10();}} className="Btn-Blue-BG" value={10}>Automotive</ToggleButton>
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton checked15={checked15} onChange={() => {handleMultipleCategories(checked15, "Favorites"); handleChecked15();}} className="Btn-Blue-BG" value={15}>Favorites</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
+            
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
                 <ToggleButton checked2={checked16} onChange={() => {handleMultipleCategories(checked16, "Movies/Plays"); handleChecked16();}} className="Btn-Blue-BG" value={16}>Movies/Plays</ToggleButton>
-            </ToggleButtonGroup>{' '}
+            </ToggleButtonGroup>
         </body>
     )
   }

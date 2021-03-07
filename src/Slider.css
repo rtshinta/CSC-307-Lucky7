@@ -1,5 +1,12 @@
 .slidecontainer {
-    width: 50%; /* Width of the outside container */   
+    width: 100%;
+    background-color: rgb(242, 242, 242);
+    margin-top: 0.7em; 
+  }
+
+  .sliderval {
+    margin-top: 0.25em;
+    font-size: 1em;
   }
 
 

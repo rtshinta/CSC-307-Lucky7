@@ -1,1 +1,47 @@
-.dropdown-toggle:after { content: none}
+/*Controls NavBar elements*/
+.navbar img{
+    /* justify-content: center !important;
+    align-items: center !important; */
+    width: 125px;
+    margin-top: -25px;
+    padding: 0;
+}
+
+.navbar-form {
+    padding-top: 23px;
+}
+
+.navbar .dropdown-toggle:after {
+    content: none
+}
+
+.navbar button {
+    background-color: rgb(17, 134, 242) !important;
+    border-color: rgb(17, 134, 242) !important;
+}
+
+.navbar button:hover {
+    background-color: rgb(69, 167, 239) !important;
+    border-color: rgb(69, 167, 239) !important;
+    box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
+}
+
+.navbar button[aria-expanded="true"] {
+    background-color: rgb(100, 185, 237) !important;
+    border-color: rgb(100, 185, 237) !important;
+    box-shadow: none !important;
+}
+
+.navbar button[aria-expanded="true"]:hover {
+    box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
+    background-color: rgb(69, 167, 239) !important;
+    border-color: rgb(69, 167, 239) !important;
+}
+
+.navbar button[aria-expanded="false"] {
+    box-shadow: none !important;
+}
+
+.navbar button[aria-expanded="false"]:hover {
+    box-shadow: 0 0 0 0.2rem rgba(69, 167, 239, 0.5) !important;
+}
