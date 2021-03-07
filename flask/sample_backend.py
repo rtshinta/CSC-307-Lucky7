@@ -43,7 +43,7 @@ def get_users():
         resp = jsonify(newUser), 201
         return resp
 
-@app.route('/users/<id>', methods=['GET', 'DELETE'])
+@app.route('/users/<id>', methods=['GET', 'DELETE', 'PATCH'])
 def get_user(id):
     if request.method == 'GET':
         #http://127.0.0.1:5000/users/602344b8aba6d37fafe9fae9
@@ -66,6 +66,14 @@ def get_user(id):
             return jsonify({"success": "User was removed"}), 204
     
         return jsonify({"error": "User not found"}), 404
+
+    elif request.method == 'PATCH':
+        user = User({"_id": id})
+        data = request.get_json()
+        for key in data:
+            user.update(key,data[key])
+
+        return jsonify({"Success": "User was patched"}), 200
 
 """def find_users_by_name_job(name, job):
     subdict = {'users_list' : []}

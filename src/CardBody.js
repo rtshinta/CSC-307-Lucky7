@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import './style.css';
-import { Card, Button, Tag, Row } from 'react-bootstrap';
+import { Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/Montserrat-Medium.ttf';
 import './CardBody.css';
-import EventExpand from './EventExpand'
 
 import {
   BrowserRouter as Router,
@@ -24,7 +23,7 @@ const trimString = (text_input, limit) => {
 
 const dayMonthYear = (date) => {
   var splitDate = date.split("-");
-  if (splitDate[1][0] == "0"){
+  if (splitDate[1][0] === "0"){
     var newDate = splitDate[1].substring(1,) + "/" + splitDate[2] + "/" + splitDate[0];
   }
   else{
@@ -34,30 +33,7 @@ const dayMonthYear = (date) => {
   return newDate
 }
 
-const StarsToDisplay = (props) => {
-  var rating = parseInt(props.text_input);
-  var ratings = Array(5).fill().map((_, i) => i < rating ? 'fa fa-star checked' : 'fa fa-star');
 
-  //Why does this not allow the rating to be 5?
-  if(rating >=0 && rating <=5)
-  {
-    return(
-      <div style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "86%", left: '0', right: '0', textAlign: 'center', fontSize: '1.5rem',}}>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-          <span class={ratings[0]}></span>
-          <span class={ratings[1]}></span>
-          <span class={ratings[2]}></span>
-          <span class={ratings[3]}></span>
-          <span class={ratings[4]}></span>
-      </div>
-    )
-  }
-  return (
-    <div>
-      Rating Input Error.
-    </div>
-    )
-}
 
 const TagOutput = (props) => {
   const tags_list = props.tags_list;
@@ -89,7 +65,7 @@ const CardBody = props => {
           <div class="grow" style={{cursor: 'pointer',}}>
 
           <Link to={{
-            pathname: "/eventdetails/:" + row.name,
+            pathname: "/eventdetails/:" + row._id,
           }}  onClick={() => props.setInfo(row)}>
 
                 <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "400px", borderRadius: '2rem',}}>
@@ -99,9 +75,12 @@ const CardBody = props => {
                         <Card.Title>{trimmed_name}</Card.Title>
                         <TagOutput tags_list={tags} ></TagOutput>
                         <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>{location}</Card.Text>
-                        <StarsToDisplay text_input={rating}></StarsToDisplay>
-                        {/* <Button style={{position: 'absolute', top: '5%', left: '80%', borderRadius: '5rem'}}  onClick={() => props.removeCharacter(index)}>X</Button> */}
+                        {/*<StarsToDisplay text_input={rating}></StarsToDisplay>*/}
                       </Card.Body>
+                      <div className = 'row'>
+                        <i className="glyphicon glyphicon-heart" style={{marginLeft: "7%",marginBottom :"5%", display:'flex', fontSize:'40px', color: "red"}}></i>
+                        <p style={{marginLeft:"2%",marginTop:"2%"}}>{rating} Likes</p>
+                      </div>
                 </Card>
 
               </Link>

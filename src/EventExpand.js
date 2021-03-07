@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './fonts/Montserrat-Medium.ttf';
 import './EventExpand.css'
-import { Card, Button, Tag, Row } from 'react-bootstrap';
+import LikeRating from './Rating';
+
 
 
 const Carousel = (props) =>
@@ -21,7 +22,7 @@ const Carousel = (props) =>
 
       {/* mapping that for loops through image list to put into slider. marks first item with active tag. */}
       { image_list.map( (image, index) => (
-        index == 0 ?
+        index === 0 ?
           <div class="carousel-item active">
             <div class="img-placeholder">
               <img class ="img-placeholder" src={image}  alt="image not found"/>
@@ -108,10 +109,13 @@ const DescriptionCard = (props) =>
         <p>{CardInfo.date}</p>
         <div className="header-text">Tags</div>
         <TagOutput tags_list={CardInfo.tags.split(',')} ></TagOutput>
-        <div className="header-text">Rating</div>
-        <StarsToDisplay text_input={CardInfo.rating}></StarsToDisplay>
+        <div className="header-text">Leave a like!</div>
+        <div className = 'row'>
+          <LikeRating CardInfo = {CardInfo} handlePatch={props.handlePatch}/>
+        </div>
       </div>
     </div>
+  
 
   )
 }
@@ -121,7 +125,7 @@ class EventExpand extends Component
 {
 
   render() {
-    const { CardInfo } = this.props;
+    const { CardInfo, handlePatch } = this.props;
     console.log("The properties in EventExpand");
     console.log(CardInfo);
 
@@ -133,7 +137,7 @@ class EventExpand extends Component
         </div>
 
         <div class="Description">
-          <DescriptionCard CardInfo={CardInfo}/>
+          <DescriptionCard CardInfo={CardInfo} handlePatch ={handlePatch}/>
         </div>
 
       </div>

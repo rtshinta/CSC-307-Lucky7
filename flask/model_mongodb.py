@@ -54,3 +54,7 @@ class User(Model):
         for user in users:
             user["_id"] = str(user["_id"])
         return users
+    
+    def update(self,key,value):
+            resp = self.collection.update({"_id": ObjectId(self._id)},{'$set' : {key: value}})
+            return resp
