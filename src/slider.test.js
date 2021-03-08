@@ -47,11 +47,3 @@ test('check zip code submit button', () => {
     expect(handleDistance).toHaveBeenCalledTimes(1);
 });
 
-test('check zip code text entry', () => {
-    const handleDistance = jest.fn();
-    const sliderComponent = render(<Slider handleDistance={handleDistance} />);
-    const slider = sliderComponent.getByRole('textbox', {
-        name: /enter your zip code/i
-      });
-    expect(slider.innerHTML).toBe('');
-})
