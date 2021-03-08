@@ -19,8 +19,8 @@ class App extends Component {
     zipcode: [],
     categories: [],
     prev_characters: [],
-    selected_Card: ' '
-
+    range: -1,
+    selected_Card: ' ',
   };
 
   componentDidMount() {
@@ -68,7 +68,7 @@ class App extends Component {
         axios.get('http://localhost:5000/zipcodes?zipcode=' + zipcode + '&range=' + range)
         .then(response => {
           const characters = response.data.users_list;
-          this.setState({ characters });
+          this.setState({ characters: characters, range: range, });
         })
 
       }
@@ -207,6 +207,16 @@ class App extends Component {
   }*/
 
   calculateDistance = (zipcode, range) => {
+    
+    if(zipcode.length == 0 || typeof range == 'undefined'){
+      axios.get('http://localhost:5000/users')
+      .then(res => {
+        const previous_characters = res.data.users_list;
+        this.setState({
+          characters: previous_characters,
+        });
+      })
+    }
     if(this.state.categories.length > 0){
     axios.get('http://localhost:5000/user_zipcode?zipcode=' + zipcode)
     .then(res => {
@@ -220,11 +230,13 @@ class App extends Component {
           const previous_characters = res.data.users_list;
           this.setState({
             characters: previous_characters,
+            range: range,
           });
         })
       }
       var characters = [];
       var c = this.state.prev_characters;
+      console.log(range);
       for(var i=0; i < this.state.prev_characters.length; i++){
         var tags = this.state.prev_characters[i]['tags'].split(",").map(v => v.toLowerCase());
         tags = tags.map(v => v.trim());
@@ -254,6 +266,7 @@ class App extends Component {
       }
       this.setState({
         characters: characters,
+        range: range
       });
     })}
     else{

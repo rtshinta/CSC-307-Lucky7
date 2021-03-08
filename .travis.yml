@@ -18,4 +18,4 @@ jobs:
     - npm install react-bootstrap-range-slider
     - npm install --global yarn
     script:
-    - yarn test --watchAll=false 
+    - yarn test --watchAll=false --silent
