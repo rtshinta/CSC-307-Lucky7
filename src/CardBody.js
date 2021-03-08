@@ -62,7 +62,7 @@ const CardBody = props => {
       return (
 
 
-        <li style={{padding: '20px'}}>
+        <li className="Cards">
           <div class="grow" style={{cursor: 'pointer',}}>
 
           <Link to={{

@@ -399,6 +399,7 @@ ul,
 dl,
 table {
   margin: 0 0 1.5rem 0;
+  padding-inline-start: 0%;
 }
 
 ul li ul {
@@ -1038,9 +1039,47 @@ caption {
 
 .Homepage {
   display: grid;
-  grid-template-columns: auto auto;
+  grid-template-columns: 300px auto;
   grid-template-rows: auto;
+  grid-gap: 20px;
 }
+
+/*These media queries control the card grid on different screen/window sizes*/
+@media screen and (min-width: 500px){
+  tbody {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 40px;
+    justify-items: right;
+  }
+}
+
+@media screen and (min-width: 1075px){
+  tbody {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto;
+  }
+}
+
+@media screen and (min-width: 1630px){
+  tbody {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-template-rows: auto;
+  }
+}
+
+@media screen and (min-width: 2025px){
+  tbody {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-template-rows: auto;
+  }
+}
+
 
 .Form_page{
   display: grid;
