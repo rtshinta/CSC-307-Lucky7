@@ -79,8 +79,8 @@ const CardBody = props => {
                         {/*<StarsToDisplay text_input={rating}></StarsToDisplay>*/}
                       </Card.Body>
                       <div className = 'row'>
-                        <i className="glyphicon glyphicon-heart" style={{marginLeft: "7%",marginBottom :"5%", display:'flex', fontSize:'40px', color: "red"}}></i>
-                        <p style={{marginLeft:"2%",marginTop:"2%"}}>{rating} Likes</p>
+                        <i className="glyphicon glyphicon-heart" style={{marginLeft: "7%",marginBottom :"5%", display:'flex', fontSize:'30px', color: "#1186F2"}}></i>
+                        <p style={{marginLeft:"3%",marginTop:"1%"}}>{rating} Likes</p>
                       </div>
                 </Card>
 
