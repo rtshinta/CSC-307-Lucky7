@@ -8,7 +8,7 @@ class Form extends Component {
     date: '',
     photo: '',
     tags: '',
-    rating: '',
+    rating: '0',
     zipcode: '',
   };
 
@@ -86,13 +86,6 @@ class Form extends Component {
           name="photo"
           id="photo"
           value={photo}
-          onChange={this.handleChange} />
-        <label htmlFor="rating">Rating</label>
-        <input
-          type="text"
-          name="rating"
-          id="rating"
-          value={rating}
           onChange={this.handleChange} />
         <input href="/" type="button" value="Submit" onClick={this.submitForm} />
       </form>
