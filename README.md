@@ -94,3 +94,14 @@ flask run<br />
 
 To stop Flask:<br />
 (Press CTRL+C to quit)
+
+
+_______________________________________________________________________________________________________________________________
+
+
+
+### Links to our Diagrams on GitHub Wiki
+
+Link to our UML Diagram wiki: https://github.com/rtshinta/CSC-307-Lucky7/wiki/UML-Diagram<br/>
+
+Link to our Use Case Diagram: https://github.com/rtshinta/CSC-307-Lucky7/wiki/Use-Case-Diagram
