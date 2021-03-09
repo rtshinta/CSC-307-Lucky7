@@ -576,7 +576,7 @@ dd {
 
 /*this is where change sizing*/
 .container, .small-container, .medium-container {
-  max-width: 80%;
+  max-width: 100%;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1051,32 +1051,51 @@ caption {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-column-gap: 20px;
-    grid-row-gap: 40px;
+    grid-row-gap: 20px;
     justify-items: right;
   }
-}
 
-@media screen and (min-width: 1075px){
-  tbody {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto;
+  .Homepage{
+    max-width: 100%;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
-@media screen and (min-width: 1630px){
+@media screen and (min-width: 950px){
   tbody {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 300px 300px;
     grid-template-rows: auto;
+  }
+
+  .Homepage{
+    max-width: 90%;
+  }
+}
+
+@media screen and (min-width: 1500px){
+  tbody {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: auto;
+  }
+
+  .Homepage{
+    max-width: 75%;
   }
 }
 
 @media screen and (min-width: 2025px){
   tbody {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 300px 300px 300px 300px;
     grid-template-rows: auto;
+  }
+
+  .Homepage{
+    max-width: 70%;
   }
 }
 

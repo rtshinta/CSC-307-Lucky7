@@ -24,30 +24,27 @@ const Carousel = (props) =>
       { image_list.map( (image, index) => (
         index === 0 ?
           <div class="carousel-item active">
-            <div class="img-placeholder">
+            <div class="img-container">
               <img class ="img-placeholder" src={image}  alt="image not found"/>
             </div>
           </div>
           :
           <div class="carousel-item">
-            <div class="img-placeholder">
+            <div class="img-container">
               <img class ="img-placeholder" src={image}  alt="image not found"/>
             </div>
           </div>
       ))}
-
     </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
 
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
   </div>
 
   )
@@ -132,7 +129,7 @@ class EventExpand extends Component
     return(
       <div class="grid-container">
 
-        <div class="Carasoul">
+        <div class="Carousel">
           <Carousel CardInfo={CardInfo}/>
         </div>
 
