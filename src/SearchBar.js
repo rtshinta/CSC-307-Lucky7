@@ -7,8 +7,7 @@ import './SearchBar.css'
 class SearchBar extends Component
 {
   initialState = {
-    currentInput: '',
-    searchEnter: '',
+    currentInput: ''
   };
   state = this.initialState;
 
@@ -23,34 +22,20 @@ class SearchBar extends Component
   }
 
 
-  //Upon button click, update shown result.
-  submitForm = () => {
-    //this.setState(this.state);
-    this.setState({
-      ['searchEnter']: this.state.currentInput,
-    })
-  }
+
 
 
   render() {
     const { currentInput, searchEnter } = this.state;
     const { searchFunction } = this.props;
 
-    /*return (
-      <form>
-        <label htmlFor='currentInput'></label>
-        <input type="text" name="currentInput" id="currentInput" value={currentInput} onChange={this.searchSubmit} />
-        <input type="button" value="Submit" onClick={() => this.props.searchFunction(currentInput)} />
-        <p>{searchEnter}</p>
-      </form>
-    );*/
 
     return(
       <nav class="navbar navbar-default"style={{padding:'0px',backgroundColor:'transparent',borderColor:'transparent'}}>
           <div class="container-fluid" style = {{padding:'0px'}}>
               <div class="navbar-header">
                   <a class="navbar-brand" href="http://localhost:3000/">
-                      <img src="logo_icon.png"/>
+                      <img src="logo_icon.png" alt = "failed to load image"/>
                   </a>
               </div>
               <form class="navbar-form navbar-right">

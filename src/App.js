@@ -11,7 +11,6 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import { waitForElementToBeRemoved } from '@testing-library/react';
 
 class App extends Component {
 	state = {
@@ -155,7 +154,7 @@ class App extends Component {
 
   calculateDistance = (zipcode, range) => {
     
-    if(zipcode.length == 0 || typeof range == 'undefined'){
+    if(zipcode.length === 0 || typeof range === 'undefined'){
       axios.get('http://localhost:5000/users')
       .then(res => {
         const previous_characters = res.data.users_list;
@@ -171,7 +170,7 @@ class App extends Component {
       this.setState({
         zipcode: coordinates,
       });
-      if(zipcode.length == 0 || typeof range == 'undefined'){
+      if(zipcode.length === 0 || typeof range === 'undefined'){
         axios.get('http://localhost:5000/users')
         .then(res => {
           const previous_characters = res.data.users_list;
@@ -187,7 +186,7 @@ class App extends Component {
       for(var i=0; i < this.state.prev_characters.length; i++){
         var tags = this.state.prev_characters[i]['tags'].split(",").map(v => v.toLowerCase());
         tags = tags.map(v => v.trim());
-        if (this.state.zipcode[0] == this.state.prev_characters[i]['latitude'] && this.state.zipcode[1] == this.state.prev_characters[i]['longitude'] && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
+        if (this.state.zipcode[0] === this.state.prev_characters[i]['latitude'] && this.state.zipcode[1] === this.state.prev_characters[i]['longitude'] && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
           characters.push(this.state.prev_characters[i]);
         }
         else{

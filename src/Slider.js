@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import {Form, Button} from 'react-bootstrap';
 import './Slider.css';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';

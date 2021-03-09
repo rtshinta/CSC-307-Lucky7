@@ -1,8 +1,8 @@
-import React, { Component, useState } from 'react';
+import React, {useState } from 'react';
 import './Sidecard.css';
 import Slider from './Slider';
 import Categories from './Categories';
-import { Card, Button, Tag, Dropdown, DropdownButton } from 'react-bootstrap';
+import { Card,Dropdown, DropdownButton } from 'react-bootstrap';
 import './style.css';
 import './CardBody.css';
 

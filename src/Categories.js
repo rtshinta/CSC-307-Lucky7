@@ -1,6 +1,5 @@
-import React, { Component, useState } from 'react';
-import { ButtonGroup } from 'react-bootstrap';
-import {Button, ToggleButton, ToggleButtonGroup} from 'react-bootstrap'
+import React, {useState } from 'react';
+import {ToggleButton, ToggleButtonGroup} from 'react-bootstrap'
 import './Categories.css';
 
 

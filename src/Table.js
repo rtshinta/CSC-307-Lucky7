@@ -1,4 +1,3 @@
-import React, { Component } from 'react'
 import CardBody from './CardBody'
 
 const Table = props => {

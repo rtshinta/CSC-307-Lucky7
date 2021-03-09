@@ -1,4 +1,3 @@
-import React, { Component, useState } from 'react';
 import './style.css';
 import { Card} from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -6,9 +5,6 @@ import './fonts/Montserrat-Medium.ttf';
 import './CardBody.css';
 
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
   Link
 } from "react-router-dom";
 
