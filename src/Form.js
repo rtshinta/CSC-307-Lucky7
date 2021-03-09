@@ -45,12 +45,20 @@ class Form extends Component {
           value={event}
           onChange={this.handleChange} />
         <label htmlFor="description">Description</label>
-        <input
+        {/* <input
           type="text"
           name="description"
           id="description"
           value={description}
-          onChange={this.handleChange} />
+          onChange={this.handleChange} /> */}
+        <textarea
+          type="text"
+          name="description"
+          id="description"
+          value={description}
+          onChange={this.handleChange}
+          rows="4"
+          cols="20" />
         <label htmlFor="location">Location</label>
         <input
           type="text"

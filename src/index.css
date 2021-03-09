@@ -1133,6 +1133,13 @@ input[type=text] {
   margin-top: 1.6em;
 }
 
+textarea[type=text]{
+  margin: 1em;
+  border-radius:25px;
+  width:82%;
+  border-color:rgb(40, 92, 233);
+}
+
 /*
  * Navigation
  */
