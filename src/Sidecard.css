@@ -34,10 +34,6 @@
     width: 100%;
 }
 
-.dropdown1 .dropdown-toggle:after {
-    content: none;
-}
-
 .dropdown1 button:hover {
     background-color: rgb(69, 167, 239) !important;
     border-color: rgb(69, 167, 239) !important;
