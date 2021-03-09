@@ -1051,7 +1051,7 @@ caption {
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-column-gap: 20px;
-    grid-row-gap: 40px;
+    grid-row-gap: 20px;
     justify-items: right;
   }
 
@@ -1063,10 +1063,10 @@ caption {
   }
 }
 
-@media screen and (min-width: 1075px){
+@media screen and (min-width: 950px){
   tbody {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-template-columns: 300px 300px;
     grid-template-rows: auto;
   }
 
@@ -1078,19 +1078,19 @@ caption {
 @media screen and (min-width: 1500px){
   tbody {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 300px 300px 300px;
     grid-template-rows: auto;
   }
 
   .Homepage{
-    max-width: 80%;
+    max-width: 75%;
   }
 }
 
 @media screen and (min-width: 2025px){
   tbody {
     display: grid;
-    grid-template-columns: auto auto auto auto;
+    grid-template-columns: 300px 300px 300px 300px;
     grid-template-rows: auto;
   }
 
