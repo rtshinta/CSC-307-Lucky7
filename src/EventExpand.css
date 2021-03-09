@@ -122,6 +122,11 @@
   padding-bottom: 2%;
 }
 
+p
+{
+  max-width: 90%;
+}
+
 .header-text
 {
   font-size: 20px;
@@ -130,4 +135,5 @@
 p
 {
   max-width: 90%;
+
 }
