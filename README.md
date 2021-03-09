@@ -56,7 +56,7 @@ ________________________________________________________________________________
 
 Link: https://www.figma.com/file/UbuZG9Uyi9Dswpcku2TjB8/App?node-id=0%3A1
 
-The link above takes you to our initial Figma UI Prototype where we planned how our frontend would appear.
+The link above takes you to our initial Figma UI Prototype where we planned how our frontend would appear.<br />
 Last updated on February 5, 2021
 
 
@@ -70,27 +70,27 @@ ________________________________________________________________________________
 First clone our repository
 cd into the CSC-307-Lucky7 Folder
 
-To start the react frontend install the following packages:
-npm install
-npm install react-bootstrap bootstrap
-npm install react-bootstrap-range-slider
-npm install --global yarn
-To start react:
-npm start
+To start the react frontend install the following packages:<br />
+npm install<br />
+npm install react-bootstrap bootstrap<br />
+npm install react-bootstrap-range-slider<br />
+npm install --global yarn<br />
+To start react:<br />
+npm start<br />
 
-To install Flask and setup a virtual environment depending on your system:
-First cd into the flask folder
-Follow the instructions from https://flask.palletsprojects.com/en/1.1.x/installation/
-Once you have installed Flask and your virtual environment:
-For Windows use the following commands to start Flask:
-set FLASK_APP=sample_backend.py
-set FLASK_ENV=development
-flask run
+To install Flask and setup a virtual environment depending on your system:<br />
+First cd into the flask folder<br />
+Follow the instructions from https://flask.palletsprojects.com/en/1.1.x/installation/<br />
+Once you have installed Flask and your virtual environment:<br />
+For Windows use the following commands to start Flask:<br />
+set FLASK_APP=sample_backend.py<br />
+set FLASK_ENV=development<br />
+flask run<br />
 
-For Mac/Linux use the following commands to start Flask:
-export FLASK_APP=sample_backend.py
-export FLASK_ENV=development
-flask run
+For Mac/Linux use the following commands to start Flask:<br />
+export FLASK_APP=sample_backend.py<br />
+export FLASK_ENV=development<br />
+flask run<br />
 
-To stop Flask:
+To stop Flask:<br />
 (Press CTRL+C to quit)
