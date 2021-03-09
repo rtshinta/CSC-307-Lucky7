@@ -47,3 +47,11 @@ test('check zip code submit button', () => {
     expect(handleDistance).toHaveBeenCalledTimes(1);
 });
 
+
+test('should call handleSubmit when submit is clicked', () => {
+    const handleDistance = jest.fn();
+    const form = render(<Slider handleDistance={handleDistance}/>);
+    const submit = form.getByRole('textbox');
+    fireEvent.change(submit, {target: {value: '93405'}});
+    expect(submit.value).toBe('93405');
+});
