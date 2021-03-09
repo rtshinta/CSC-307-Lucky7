@@ -20,4 +20,22 @@ div.date {
 
 .Cards{
   max-width: min-content;
+  font-weight: 400;
+}
+
+.Cards .card-title.h5{
+  font-size: 1.5rem;
+  margin-top: 0rem;
+  margin-bottom: 0.5rem;
+  font-weight: 350;
+}
+
+/* .Cards .date{
+  font-weight: 150;
+} */
+
+.badge{
+  background-color: rgb(17, 134, 242) !important;
+  border-color: rgb(17, 134, 242) !important;
+  border-radius: 0.75em !important;
 }

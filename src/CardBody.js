@@ -71,13 +71,12 @@ const CardBody = props => {
 
                 <Card style={{ boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)', width: '300px', height: "400px", borderRadius: '2rem',}}>
                   <Card.Img style={{ height: '30%', objectFit: 'cover', borderTopLeftRadius: '2rem', borderTopRightRadius: '2rem'}} src={row.photo} />
-                    <div style={{ textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: '#1186F2'}}>{d}</div>
-                      <Card.Body>
+                  <div style={{ textAlign: 'center', fontSize: '1.5rem', letterSpacing: '-1px', height: '2.5rem', color: 'white', backgroundColor: 'rgb(17, 134, 242)'}}>{d}</div>
+                  <Card.Body>
                         <Card.Title>{trimmed_name}</Card.Title>
                         <TagOutput tags_list={tags} ></TagOutput>
                         <Card.Text style={{position: 'absolute', marginLeft: 'auto', marginRight: 'auto', top: "75%", left: '0', right: '0', textAlign: 'center', fontSize: '1.25rem',}}>{location}</Card.Text>
-                        {/*<StarsToDisplay text_input={rating}></StarsToDisplay>*/}
-                      </Card.Body>
+                  </Card.Body>
                       <div className = 'row'>
                         <i className="glyphicon glyphicon-heart" style={{marginLeft: "7%",marginBottom :"5%", display:'flex', fontSize:'30px', color: "#1186F2"}}></i>
                         <p style={{marginLeft:"3%",marginTop:"1%"}}>{rating} Likes</p>
