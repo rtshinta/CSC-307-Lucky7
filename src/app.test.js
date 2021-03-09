@@ -13,4 +13,4 @@ test('render App', () => {
     fireEvent.click(togglebutton[0]);
     fireEvent.click(togglebutton[0], {target: {checked: true}});
     expect(togglebutton[0].checked).toBe(true);
-})
+});

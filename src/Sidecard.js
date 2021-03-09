@@ -8,12 +8,12 @@ import './CardBody.css';
 
 const Sidecard = props => {
   const { sortAscending , sortDescending, sortRatingAsc, sortRatingDesc, sortCategories, handleDistance } = props;
-  const [value, setValue] = useState("Newest to Oldest \u25BD");
+  const [value, setValue] = useState("Sort by Date");
   const handleSelect=(e)=>{
     setValue(e)
   }
 
-  const [value2, setValue2] = useState("Most to Least Liked \u25BD");
+  const [value2, setValue2] = useState("Sort by Likes");
   const handleSelect2=(e)=>{
     setValue2(e)
   }
@@ -24,14 +24,14 @@ const Sidecard = props => {
       <Card.Body>
         <Card.Title>Filters</Card.Title>
         <DropdownButton title={value} className="dropdown1" onSelect={handleSelect}>
-          <Dropdown.Item onClick={sortAscending} eventKey="Newest to Oldest &#9661;">Newest to Oldest</Dropdown.Item>
+          <Dropdown.Item onClick={sortAscending} eventKey="Newest to Oldest">Newest to Oldest</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item onClick={sortDescending} eventKey="Oldest to Newest &#9661;">Oldest to Newest</Dropdown.Item>
+          <Dropdown.Item onClick={sortDescending} eventKey="Oldest to Newest">Oldest to Newest</Dropdown.Item>
         </DropdownButton>
         <DropdownButton  title={value2} className="dropdown1" onSelect={handleSelect2}>
-          <Dropdown.Item onClick={sortRatingDesc} eventKey="Most to Least Liked &#9661;">Most to Least Liked</Dropdown.Item>
+          <Dropdown.Item onClick={sortRatingDesc} eventKey="Most to Least Liked">Most to Least Liked</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item onClick={sortRatingAsc} eventKey="Least to Most Liked &#9661;">Least to Most Liked</Dropdown.Item>
+          <Dropdown.Item onClick={sortRatingAsc} eventKey="Least to Most Liked">Least to Most Liked</Dropdown.Item>
         </DropdownButton>
         <Card.Subtitle>Search Range</Card.Subtitle>
         <Slider handleDistance={handleDistance} />

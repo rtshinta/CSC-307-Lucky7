@@ -59,7 +59,7 @@ const Categories = props => {
             {/* <label htmlFor="categoryFilters">Category Filters</label> */}
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange} >
-                <ToggleButton  checked={checked} onChange={() => {handleMultipleCategories(checked, "Clothing"); handleChecked();}} className="Btn-Blue-BG" value={1}>Clothing/Apparel</ToggleButton>
+                <ToggleButton  checked={checked} onChange={() => {handleMultipleCategories(checked, "Clothing/Apparel"); handleChecked();}} className="Btn-Blue-BG" value={1}>Clothing/Apparel</ToggleButton>
             </ToggleButtonGroup>
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
@@ -99,7 +99,7 @@ const Categories = props => {
             </ToggleButtonGroup>
 
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked9={checked9} onChange={() => {handleMultipleCategories(checked9, "Sports"); handleChecked9();}} className="Btn-Blue-BG" value={9}>Athletic/Sports</ToggleButton>
+                <ToggleButton checked9={checked9} onChange={() => {handleMultipleCategories(checked9, "Athletic/Sports"); handleChecked9();}} className="Btn-Blue-BG" value={9}>Athletic/Sports</ToggleButton>
             </ToggleButtonGroup>
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>

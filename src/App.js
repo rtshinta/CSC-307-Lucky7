@@ -152,59 +152,6 @@ class App extends Component {
     })
   }
 
-  /*calculateDistance = (zipcode, range) => {
-    if(this.state.categories.length > 0){
-    axios.get('http://localhost:5000/user_zipcode?zipcode=' + zipcode)
-    .then(res => {
-      const coordinates = res.data.users_list;
-      this.setState({
-        zipcode: coordinates,
-      });
-      if(zipcode.length == 0 || typeof range == 'undefined'){
-        axios.get('http://localhost:5000/users')
-        .then(res => {
-          const previous_characters = res.data.users_list;
-          this.setState({
-            characters: previous_characters,
-          });
-        })
-      }
-      var characters = [];
-      var c = this.state.prev_characters;
-      for(var i=0; i < this.state.characters.length; i++){
-        if (this.state.zipcode[0] == this.state.characters[i]['latitude'] && this.state.zipcode[1] == this.state.characters[i]['longitude']){
-          characters.push(this.state.characters[i]);
-        }
-        else{
-          var radlat1 = Math.PI * this.state.zipcode[0]/180;
-          var radlat2 = Math.PI * this.state.characters[i]['latitude']/180;
-          var theta = this.state.zipcode[1]-this.state.characters[i]['longitude'];
-          var radtheta = Math.PI * theta/180;
-          var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
-          if (dist > 1) {
-            dist = 1;
-          }
-          dist = Math.acos(dist);
-          dist = dist * 180/Math.PI;
-          dist = dist * 60 * 1.1515;
-
-          var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
-          tags = tags.map(v => v.trim());
-          //console.log(tags);
-
-          if (dist <= range && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
-            characters.push(this.state.characters[i]);
-          }
-        }
-      }
-      this.setState({
-        characters: characters,
-      });
-    })}
-    else{
-      this.handleDistance(zipcode, range);
-    }
-  }*/
 
   calculateDistance = (zipcode, range) => {
     
@@ -489,8 +436,12 @@ const Home = (props) => {
 function About() {
   return (
   <div>  
-    <h2>About</h2>
-    <p>Here we'll put some information about our team</p>
+    <h1>About</h1>
+    <h3>Website created by Coby Hong, Jonathan Fisher, Jaime Rizo, Ryan Shintaku</h3>
+    <p>Use the Form Page located in the menu button on the top right to enter information about an upcoming popup event
+      <br></br> Click on our logo to return to the homepage where you can sort, filter, and search for events
+      <br></br> Thank you for using our popup event feed for finding events and posting your events!
+    </p>
   </div>
   )
 }
