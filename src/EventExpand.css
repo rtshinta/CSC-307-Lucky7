@@ -70,40 +70,24 @@
   font-size: 55px;
 }
 
-.carousel-control-next{
+.carousel-control-next {
   height: 50px;
   right: 20%;
   top: 565px;
   opacity: 1;
 }
-.carousel-control-prev
-{
+.carousel-control-prev {
     height: 50px;
     left: 20%;
     top: 565px;
     opacity: 1;
 }
 
-/*Screen size shrink result in change in style for arrow buttons*/
-
-/* @media only screen and (min-width: 1200px) 
-{
-    .carousel-control-next
-    {
-        right: 5%;
-    }
-    .carousel-control-prev
-    {
-        left: 5%;
-    }
-} */
-
 /*===================================================*/
 
 /*Description Styling*/
 
-.div-housing
-{
+.div-housing {
   background-color: white;
   border-radius: 25px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -115,25 +99,20 @@
   margin-right: auto;
 }
 
-.align-text
-{
+.align-text {
   padding-left: 10%;
   padding-top: 2%;
   padding-bottom: 2%;
 }
 
-p
-{
+p {
   max-width: 90%;
 }
 
-.header-text
-{
+.header-text {
   font-size: 20px;
 }
 
-p
-{
+p {
   max-width: 90%;
-
 }
