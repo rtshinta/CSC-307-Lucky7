@@ -79,7 +79,7 @@ test('test checked state for Farmers Market', () => {
 test('test Concerts category button', () => {
   const sortCategories = jest.fn();
   const categories = render(<Categories sortCategories={sortCategories}/>);
-  const togglebutton = categories.queryAllByText('Concerts');
+  const togglebutton = categories.queryAllByText('Concert');
   fireEvent.click(togglebutton[0]);
   fireEvent.click(togglebutton[0]);
   expect(sortCategories).toHaveBeenCalledTimes(2);

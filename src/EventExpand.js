@@ -62,32 +62,6 @@ const TagOutput = (props) => {
 }
 
 
-const StarsToDisplay = (props) => {
-  var rating = parseInt(props.text_input);
-  var ratings = Array(5).fill().map((_, i) => i < rating ? 'fa fa-star checked' : 'fa fa-star');
-
-  //Why does this not allow the rating to be 5?
-  if(rating >=0 && rating <=5)
-  {
-    return(
-      <div>
-          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></link>
-          <span class={ratings[0]}></span>
-          <span class={ratings[1]}></span>
-          <span class={ratings[2]}></span>
-          <span class={ratings[3]}></span>
-          <span class={ratings[4]}></span>
-      </div>
-    )
-  }
-  return (
-    <div>
-      Rating Input Error.
-    </div>
-    )
-}
-
-
 const DescriptionCard = (props) =>
 {
 
