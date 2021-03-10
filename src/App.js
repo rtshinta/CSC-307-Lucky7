@@ -29,10 +29,10 @@ class App extends Component {
        this.setState({ characters });
      })
      .catch(function (error) {
-       //Not handling the error. Just logging into the console.
        console.log(error);
      });
  }
+
 
   removeCharacter = index => {
     this.makeDeleteCall(index).then( callResult => {
@@ -50,8 +50,6 @@ class App extends Component {
   handleSubmit = character => {
     this.makePostCall(character).then( callResult => {
        if (callResult === true) {
-         //this.setState({ characters: [...this.state.characters, character] });
-
          axios.get('http://localhost:5000/users')
          .then(response => {
            const characters = response.data.users_list;
@@ -60,6 +58,7 @@ class App extends Component {
        }
     });
   }
+
 
   handleDistance = (zipcode, range) => {
     this.makeDistanceCall(zipcode, range).then( callResult => {
@@ -74,7 +73,6 @@ class App extends Component {
     })
   }
 
-  
 
   makePostCall(character){
     return axios.post('http://localhost:5000/users', character)
@@ -87,6 +85,7 @@ class App extends Component {
        return false;
      });
   }
+
 
   makeDistanceCall(zipcode, range){
     return axios.get('http://localhost:5000/zipcodes?zipcode=' + zipcode + '&range=' + range)
@@ -116,18 +115,9 @@ class App extends Component {
      });
   }
 
-  handleChangeStart = () => {
-    console.log('Change event started')
-  };
 
-  handleChange = value => {
-    this.setState({
-      value: value
-    })
-  };
 
-  //If string is not empty, do filter search on characters list.
-  //else, reload previous information.
+
   handleSearch = textString => {
     axios.get('http://localhost:5000/users')
     .then(res => {
@@ -201,10 +191,6 @@ class App extends Component {
           dist = Math.acos(dist);
           dist = dist * 180/Math.PI;
           dist = dist * 60 * 1.1515;
-
-          
-          //console.log(tags);
-
           if (dist <= range && this.state.categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
             characters.push(this.state.prev_characters[i]);
           }
@@ -221,7 +207,6 @@ class App extends Component {
   }
 
   
-
   handleCategories = (categories) => {
     axios.get('http://localhost:5000/users')
     .then(res => {
@@ -234,19 +219,14 @@ class App extends Component {
       if(categories.length !== 0)
       {
         var characters = [];
-        //console.log(categories.some(r=>['Concert', 'Clothing', 'Help', 'food truck'].indexOf(r) >= 0));
-        const categoriesLowercase = categories.forEach(element => element.toLowerCase());
         for(var i=0; i < this.state.characters.length; i++){
           var tags = this.state.characters[i]['tags'].split(",").map(v => v.toLowerCase());
           tags = tags.map(v => v.trim());
-          //console.log(tags);
           if(categories.map(v => v.toLowerCase()).some(r=>tags.indexOf(r) >= 0)){
             characters.push(this.state.characters[i]);
           }
         }
-
         this.setState({ characters });
-        //this.setState({ categories: categories});
       }
       else
       {
@@ -255,48 +235,46 @@ class App extends Component {
           categories: [],
         });
       }
-
     })
   }
+
 
   sortCharacterList = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.date.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.date.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.date.toUpperCase(); 
+      var nameB = b.date.toUpperCase(); 
       if (nameA < nameB) {
         return -1;
       }
       if (nameA > nameB) {
         return 1;
       }
-    
-      // names must be equal
       return 0;
     });
     this.setState({
       characters: sortedList,
     });
+    return sortedList;
   }
 
   sortCharacterListDesc = () => {
     const c = this.state.characters;
     const sortedList = c.sort(function(a, b) {
-      var nameA = a.date.toUpperCase(); // ignore upper and lowercase
-      var nameB = b.date.toUpperCase(); // ignore upper and lowercase
+      var nameA = a.date.toUpperCase(); 
+      var nameB = b.date.toUpperCase(); 
       if (nameA > nameB) {
         return -1;
       }
       if (nameA < nameB) {
         return 1;
       }
-    
-      // names must be equal
       return 0;
     });
     this.setState({
       characters: sortedList,
     });
+    return sortedList;
   }
 
   sortByRating = () => {
@@ -310,13 +288,12 @@ class App extends Component {
       if (nameA > nameB) {
         return 1;
       }
-    
-      // names must be equal
       return 0;
     });
     this.setState({
       characters: sortedList,
     });
+    return sortedList;
   }
 
   sortByRatingDesc = () => {
@@ -330,13 +307,12 @@ class App extends Component {
       if (nameA < nameB) {
         return 1;
       }
-    
-      // names must be equal
       return 0;
     });
     this.setState({
       characters: sortedList,
     });
+    return sortedList;
   }
 
   setInfo = row => {
@@ -370,6 +346,7 @@ class App extends Component {
       }
    });
   }
+
 
   render() {
     const { characters } = this.state;
@@ -405,13 +382,11 @@ class App extends Component {
       </div>
     );
   }
-  
-
-
 }
-//<Slider defaultValue={50} min={0} step={1} max={100} value={this.state.value} onChange={this.handleChange} onDragStop={this.handleDragStop} vertical={true}/>
-/*Note the last line in the App.js file. It makes the component available to be imported into other components or files (like we did in the index.js -- see the import).*/
+
+
 export default App
+
 
 const EventForm = (props) => {
   return (
@@ -421,16 +396,24 @@ const EventForm = (props) => {
   )
 }
 
+
 const Home = (props) => {
   return (
     <div class="full_container">
     <div className="Homepage">
-      <Sidecard sortAscending={props.sortAscending} sortDescending={props.sortDescending} sortRatingAsc={props.sortRatingAscending} sortRatingDesc={props.sortRatingDescending} sortCategories={props.handleCategories} handleDistance={props.handleDistance}/>
+      <Sidecard 
+      sortAscending={props.sortAscending} 
+      sortDescending={props.sortDescending} 
+      sortRatingAsc={props.sortRatingAscending} 
+      sortRatingDesc={props.sortRatingDescending} 
+      sortCategories={props.handleCategories} 
+      handleDistance={props.handleDistance}/>
       <Table characterData={props.characterData} removeCharacter={props.removeCharacter} setInfo={props.setInfo}/>
     </div>
     </div>
   )
 }
+
 
 function About() {
   return (
