@@ -70,7 +70,7 @@ const Categories = props => {
             </ToggleButtonGroup>
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>
-                <ToggleButton checked4={checked4} onChange={() => {handleMultipleCategories(checked4, "Concert"); handleChecked4();}}  className="Btn-Blue-BG" value={4}>Concerts</ToggleButton>
+                <ToggleButton checked4={checked4} onChange={() => {handleMultipleCategories(checked4, "Concert"); handleChecked4();}}  className="Btn-Blue-BG" value={4}>Concert</ToggleButton>
             </ToggleButtonGroup>
             
             <ToggleButtonGroup size="sm" type="checkbox" value={value} onChange={handleChange}>

@@ -33,12 +33,12 @@ test('tests date field of cardbody component', () =>
     "photo": "https://i.imgur.com/wBk6SwF.jpg",
     "description": "Burger Consumer",
     "event": "Blood Man",
-    "date": "2/12/2021",
+    "date": "2021-02-12",
     "location": "San Luis Obispo, CA",
     "tags": "food truck",
     "rating": "1"
 };
   const wrapper = (<CardBody characterData={character} removeCharacter={null} />);
   const value = wrapper.props.characterData.date
-  expect(value).toMatch("2/12/2021");
+  expect(value).toMatch("2021-02-12");
 });

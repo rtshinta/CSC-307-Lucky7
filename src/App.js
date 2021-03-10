@@ -438,6 +438,8 @@ function About() {
     <h1>About</h1>
     <h3>Website created by Coby Hong, Jonathan Fisher, Jaime Rizo, Ryan Shintaku</h3>
     <p>Use the Form Page located in the menu button on the top right to enter information about an upcoming popup event
+      <br></br> Add a comma in between tags on the input form to have multiple tags
+      <br></br> Add a comma in between photo links to add multiple photos
       <br></br> Click on our logo to return to the homepage where you can sort, filter, and search for events
       <br></br> Thank you for using our popup event feed for finding events and posting your events!
     </p>
